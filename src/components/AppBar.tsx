@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import logo  from '../imgs/logo/logo.png'
+import { Link } from 'react-router-dom'
 
 export function Appbar()
 {
@@ -13,8 +14,8 @@ export function Appbar()
         </div>
 
         <div className=' items-center font-mono md:flex md:flex-row hidden space-x-10   '>
-            <a href="">Contact</a>
-            <a href="">Team</a>
+           <Link to="/contact">Contact</Link>
+           <Link to="/team">Team</Link>
         </div>
 
         <div className='font-bold text-xl font-mono md:text-2xl pr-10'>
