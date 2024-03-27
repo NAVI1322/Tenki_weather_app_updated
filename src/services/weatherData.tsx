@@ -6,7 +6,6 @@ export const currentWeather = async (location: string) => {
     const res = await fetch(BASE_URL + "weather?q=" + location + "&APPID=" + API_KEY)
     const weatherData = await res.json()
     console.log(weatherData)
-    console.log(API_KEY)
     return weatherData
   } catch (err) {
     console.error("Error fetching data", err);
