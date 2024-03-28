@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { currentWeather } from "../services//weatherData";
+import { currentWeather } from "../services/weatherData";
 
 
 
@@ -12,10 +12,10 @@ export function CurrentCard() {
 
   useEffect(() => {
     currentWeather("toronto").then((response) => {
-      setCtemp(response.main)
+      if (response) { setCtemp(response.main) }
     })
     currentWeather("toronto").then((response) => {
-      setWeather(response.weather);
+      if (response) { setWeather(response.weather) };
     })
   }, [])
 
