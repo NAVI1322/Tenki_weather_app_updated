@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { currentWeather } from "../services/weatherData";
+import { currentWeather } from "../Services/weatherData";
 
 
 
