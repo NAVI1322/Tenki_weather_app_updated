@@ -4,10 +4,9 @@ const BASE_URL = "https://pro.openweathermap.org/data/2.5/"
 
 export const currentWeather = async (location: string) => {
   try {
-    const res = await fetch(BASE_URL + "weather?q=" + location + "&APPID=" + API_KEY) // fetch req 
+    const res = await fetch(BASE_URL + "weather?q=" + location + "&units=metric" +"&APPID=" + API_KEY) // fetch req 
     const weatherData = await res.json()
-    console.log(weatherData)
-    console.log(API_KEY)
+    
     return weatherData
   } catch (err) {
     console.error("Error fetching data", err);
