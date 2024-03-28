@@ -11,10 +11,8 @@ import { DailyCard } from "./components/DailyCard";
 
 function App() {
 
-  currentWeather("toronto");
 
   return (
-
     <div>
       <Router>
         <div>
@@ -26,6 +24,7 @@ function App() {
         </Routes>
       </Router>
       <div>
+        <CurrentCard />
         <DailyCard />
       </div>
     </div>
