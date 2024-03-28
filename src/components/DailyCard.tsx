@@ -10,6 +10,7 @@ interface WeatherData {
     };
     weather: {
       description: string;
+      icon:string ;
     }[];
   }[];
 }
@@ -24,7 +25,9 @@ const fetchData = async (city: string, country: string) => {
     return null;
   }
 };
-
+const fetchIcon = (code:string) => {
+  return <img src={`https://openweathermap.org/img/wn/${code}@2x.png`} alt="Icon" className=" h-[60px] w-[60px] " />
+}
 export const DailyCard = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
 
@@ -54,10 +57,10 @@ export const DailyCard = () => {
         {weatherData && (
           <div className="flex flex-col gap-6 ">
             {weatherData.list.map((day: any, index: number) => (
-              <div key={index} className="flex justify-between bg-green-300 rounded-xl p-4">
-                <p>{(currentDay == new Date(day.dt * 1000).getDay()) ? "Today": dayNames[new Date(day.dt * 1000).getDay()] }</p>
-                <p>{day.weather[0].description}</p>
-                <p>
+              <div key={index} className="flex justify-between from-blue-800 bg-gradient-to-r to-blue-950 rounded-xl text-white font-medium">
+                <p className="flex items-center pl-4">{(currentDay == new Date(day.dt * 1000).getDay()) ? "Today": dayNames[new Date(day.dt * 1000).getDay()] }</p>
+                <p className="flex items-center flex-row">{day.weather[0].description}{fetchIcon(day.weather[0].icon)}</p>
+                <p className="flex items-center pr-4">
                   {Math.floor(day.temp.max)}°/ {Math.floor(day.temp.min)}°C
                 </p>
               </div>
