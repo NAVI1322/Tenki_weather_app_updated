@@ -6,6 +6,7 @@ import Team from "./routes/Team";
 
 import { CurrentCard } from "./components/cardtopright";
 import { DailyCard } from "./components/DailyCard";
+import { HourlyCard } from "./components/HourlyCard";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
       <div className=" flex flex-col mt-10 md:flex-row">
         <div className="w-[50%]">
           <CurrentCard />
-          <div>gurtaj part</div>
+          <HourlyCard />
         </div>
         <div>
           <DailyCard />

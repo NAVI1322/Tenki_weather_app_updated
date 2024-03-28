@@ -38,17 +38,34 @@ export interface ClimateData {
   }[];
 }
 
+export interface HourlyData {
+  list: {
+    dt: number;
+    main: {
+      feels_like: number;
+    }
+    weather: {
+      description: string,
+    }[]
+  }[]
+}
 
 export const currentWeather = async (location: string) => {
   try {
     const res = await axios.get<WeatherData>(BASE_URL + "weather?q=" + location + "&units=metric" + "&APPID=" + API_KEY)
-    console.log(res)
     return res.data
   } catch (err) {
     console.error("Error fetching data", err);
   }
 }
-
+export const HourlyWeather = async (location: string) => {
+  try {
+    const res = await axios.get<HourlyData>(BASE_URL + "forecast/hourly?q=" + location + "&cnt=24&units=metric&APPID=" + API_KEY)
+    return res.data
+  } catch (err) {
+    console.error("Error fetching data", err);
+  }
+}
 export const forecastWeather = async (location: string) => {
   try {
     const res = await axios.get<ClimateData>(BASE_URL + "forecast/climate?q=" + location + "&cnt=7&&units=metric&" + "&APPID=" + API_KEY)
