@@ -3,15 +3,11 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./routes/Contact";
 import Team from "./routes/Team";
-import { currentWeather } from "./services/weatherData";
+
 import { CurrentCard } from "./components/cardtopright";
 import { DailyCard } from "./components/DailyCard";
 
-
-
 function App() {
-
-
   return (
     <div>
       <Router>
@@ -23,9 +19,14 @@ function App() {
           <Route path="/team" element={<Team />} />
         </Routes>
       </Router>
-      <div>
-        <CurrentCard />
-        <DailyCard />
+      <div className=" flex flex-col mt-10 md:flex-row">
+        <div className="w-[50%]">
+          <CurrentCard />
+          <div>gurtaj part</div>
+        </div>
+        <div>
+          <DailyCard />
+        </div>
       </div>
     </div>
   );

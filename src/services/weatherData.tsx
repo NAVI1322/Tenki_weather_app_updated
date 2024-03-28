@@ -42,6 +42,7 @@ export interface ClimateData {
 export const currentWeather = async (location: string) => {
   try {
     const res = await axios.get<WeatherData>(BASE_URL + "weather?q=" + location + "&units=metric" + "&APPID=" + API_KEY)
+    console.log(res)
     return res.data
   } catch (err) {
     console.error("Error fetching data", err);
