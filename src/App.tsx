@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./routes/Contact";
 import Team from "./routes/Team";
-import { currentWeather} from "./Services/weatherData";
+import { currentWeather } from "./services/weatherData";
 import { CurrentCard } from "./components/cardtopright";
 import { DailyCard } from "./components/DailyCard";
 
@@ -11,24 +11,23 @@ import { DailyCard } from "./components/DailyCard";
 
 function App() {
 
- currentWeather("toronto");
+  currentWeather("toronto");
 
   return (
 
-     <div>
+    <div>
       <Router>
         <div>
-          <Appbar/>
+          <Appbar />
         </div>
         <Routes>
-          <Route path="/contact" element={<Contact/>}/>
-           <Route path="/team" element={<Team/>}/>
-         </Routes>
-       </Router>
-    <div>
-      <CurrentCard />
-      <DailyCard/>
-    </div>
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/team" element={<Team />} />
+        </Routes>
+      </Router>
+      <div>
+        <DailyCard />
+      </div>
     </div>
   );
 }
