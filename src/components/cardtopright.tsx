@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { currentWeather } from "../services//weatherData";
+import { useRecoilValue } from "recoil";
+import { textState } from "../atom/inputfields";
 
 export function CurrentCard() {
   const [Ctemp, setCtemp] = useState<any>({});
   const [Cweather, setWeather] = useState<any>([{}]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const inputBoxValue = useRecoilValue(textState)
 
   const fetchIcon = (code: string) => {
     return (
@@ -20,21 +23,19 @@ export function CurrentCard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [tempResponse, weatherResponse] = await Promise.all([
-          currentWeather("toronto"),
-          currentWeather("toronto"),
+        const [tempResponse, weatherResponse] = await Promise.all<any>([
+          currentWeather(inputBoxValue),
+          currentWeather(inputBoxValue),
         ]);
         setCtemp(tempResponse.main);
         setWeather(weatherResponse.weather);
-      } catch (error) {
-        setError(error.message || "An error occurred");
       } finally {
         setLoading(false);
-      }
+      } 
     };
 
     fetchData();
-  }, []);
+  }, [inputBoxValue]);
 
   console.log(Ctemp);
   console.log(Cweather);

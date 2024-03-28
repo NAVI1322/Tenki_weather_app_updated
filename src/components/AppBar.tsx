@@ -8,6 +8,7 @@ export function Appbar()
 {
 
     const [Menu,Setmenu] = useState(true)
+    const [inputValue,setInputValue]= useState("");
 
     return (
     <div className="  flex justify-between shadow-lg container items-center">
@@ -16,7 +17,7 @@ export function Appbar()
         </div>
 
      <InputBox />
-     
+
       <div className="md:hidden pr-6 cursor-pointer" onClick={()=>Setmenu(!Menu)}>
         {!Menu 
         ?<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">

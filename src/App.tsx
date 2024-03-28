@@ -3,12 +3,23 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./routes/Contact";
 import Team from "./routes/Team";
+import React from 'react';
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
 import { CurrentCard } from "./components/cardtopright";
 import { DailyCard } from "./components/DailyCard";
+import { useState } from "react";
 
 function App() {
+
   return (
+    <RecoilRoot>
     <div>
       <Router>
         <div>
@@ -29,6 +40,7 @@ function App() {
         </div>
       </div>
     </div>
+    </RecoilRoot>
   );
 }
 
