@@ -1,45 +1,44 @@
 import { useEffect, useState } from "react";
-
-import { currentWeather } from "../services//weatherData";
+import { currentWeather } from "../services/weatherData";
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
-
+import { fetchIcon } from "./DailyCard";
 export function CurrentCard() {
   const [Ctemp, setCtemp] = useState<any>({});
   const [Cweather, setWeather] = useState<any>([{}]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const inputBoxValue = useRecoilValue(textState)
+  const [city, setCity] = useState<any>("Toronto"); 
+  const [countryName, setCountry] = useState<any>("CA");
+  const inputBoxValue = useRecoilValue(textState);
 
-  const fetchIcon = (code: string) => {
-    return (
-      <img
-        src={`https://openweathermap.org/img/wn/${code}@2x.png`}
-        alt="Icon"
-        className=" h-[60px] w-[60px] "
-      />
-    );
-  };
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [tempResponse, weatherResponse] = await Promise.all<any>([
+        const [tempResponse, weatherResponse, cityResponse, countryResponse] = await Promise.all<any>([
+          currentWeather(inputBoxValue),
+          currentWeather(inputBoxValue),
           currentWeather(inputBoxValue),
           currentWeather(inputBoxValue),
         ]);
         setCtemp(tempResponse.main);
         setWeather(weatherResponse.weather);
+        setCity(cityResponse.name);
+        setCountry(countryResponse.sys);
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [inputBoxValue]);
+  }, [inputBoxValue]); 
+ 
 
   console.log(Ctemp);
   console.log(Cweather);
+  console.log(city);
+  console.log(countryName);
 
   return (
     <div className="flex  ">
@@ -51,7 +50,7 @@ export function CurrentCard() {
         ) : (
           <>
             <div className="font-mono font-bold text-4xl :">
-              City/CountryName
+              {city},{countryName.country}
             </div>
             <div className="font-mono font-bold text-3xl text-center p-3">
               {Math.floor(Ctemp.temp)}°C

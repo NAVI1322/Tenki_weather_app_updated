@@ -3,7 +3,6 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./routes/Contact";
 import Team from "./routes/Team";
-import React from 'react';
 import {
   RecoilRoot,
   atom,
@@ -16,6 +15,7 @@ import { CurrentCard } from "./components/cardtopright";
 import { DailyCard } from "./components/DailyCard";
 
 import { useState } from "react";
+import { HourlyCard } from "./components/HourlyCard";
 
 function App() {
 
