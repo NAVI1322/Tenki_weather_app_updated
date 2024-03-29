@@ -19,9 +19,20 @@ export function CurrentCard() {
     })
   }, [inputBoxValue]);
 
-  const currentDay = new Date().getDay()
-  console.log(currentData, currentDay)
+  function hourAMPM(dt: number) {
+    const date = new Date(dt * 1000);
 
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+
+    const time12HourFormat = hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ' ' + ampm;
+
+    return time12HourFormat;
+  }
 
   return (
     <div className="flex flex-col m-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-96 ">
@@ -31,12 +42,12 @@ export function CurrentCard() {
         <div>Error: {error}</div>
       ) : (
         <>
-          <div className="flex flex-row text-lg items-center gap-1 text-center ">
-            <div className="flex justify-start items-center">
+          <div className="flex flex-row text-sm justify-between text-lg items-center gap-1 text-center ">
+            <div className="flex  items-center">
               <FaLocationDot />{currentData?.name},{currentData?.sys.country}
             </div>
-            <div className="justify-end">
-              Today {currentDay}
+            <div className="flex ">
+              Today {hourAMPM(currentData?.dt)}
             </div>
           </div>
           <div className="flex flex-col text-center p-3 items-between mt-10">
