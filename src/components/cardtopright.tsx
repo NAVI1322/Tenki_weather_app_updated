@@ -56,7 +56,7 @@ export function CurrentCard() {
               {inputBoxValue?inputBoxValue:"Toronto"}
             </div>
             <div className="font-mono font-bold text-3xl text-center p-3">
-              {Math.floor(Ctemp.temp)}°C
+              {Math.round(Ctemp.temp)}°C
             </div>
             <div className="font-mono font-bold text-center">
               {Cweather[0].description}
@@ -67,8 +67,8 @@ export function CurrentCard() {
               </div>
             </div>
             <div className="flex flex-row space-x-6 justify-center ">
-              <div className="font-mono">H:{Math.floor(Ctemp.temp_max)}°C</div>
-              <div className="font-mono">L:{Math.floor(Ctemp.temp_min)}°C</div>
+              <div className="font-mono">H:{Math.round(Ctemp.temp_max)}°C</div>
+              <div className="font-mono">L:{Math.round(Ctemp.temp_min)}°C</div>
             </div>
           </>
         )}

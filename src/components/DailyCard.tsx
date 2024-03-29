@@ -48,7 +48,7 @@ export const DailyCard = () => {
                 <p className="flex items-center pl-4">{(currentDay == new Date(day.dt * 1000).getDay()) ? "Today" : dayNames[new Date(day.dt * 1000).getDay()]}</p>
                 <p className="flex items-center flex-row">{day.weather[0].description}{fetchIcon(day.weather[0].icon)}</p>
                 <p className="flex items-center pr-4">
-                  {Math.floor(day.temp.max)}°/ {Math.floor(day.temp.min)}°C
+                  {Math.round(day.temp.max)}° / {Math.round(day.temp.min)}°C
                 </p>
               </div>
             ))}
