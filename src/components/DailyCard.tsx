@@ -13,6 +13,7 @@ export const DailyCard = () => {
     forecastWeather(inputBoxValue).then((data) => {
       if (data) {
         setClimateData(data);
+        console.log(data)
       }
     });
   }, [inputBoxValue]);
