@@ -50,6 +50,7 @@ export interface HourlyData {
   list: {
     dt: number;
     main: {
+      temp: number
       feels_like: number;
     }
     weather: {
