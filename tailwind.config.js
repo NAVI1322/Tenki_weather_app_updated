@@ -10,6 +10,10 @@ module.exports = {
       fontFamily: {
         'sans': ['"Inter"', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        secondaryBlue: "#c4e1ff",
+        primaryBlue: "#27639d",
+      },
     }
   },
   plugins: [],

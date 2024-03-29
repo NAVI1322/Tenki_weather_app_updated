@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { WeatherData, currentWeather, fetchIcon } from "../services/weatherData";
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
+import { FaLocationDot, FaWater, FaWind } from "react-icons/fa6";
+import { BsDroplet } from "react-icons/bs";
 
 export function CurrentCard() {
   const [currentData, setCurrentData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null);
   const inputBoxValue = useRecoilValue(textState)
-
 
   useEffect(() => {
     currentWeather(inputBoxValue).then((data) => {
@@ -18,38 +19,49 @@ export function CurrentCard() {
     })
   }, [inputBoxValue]);
 
-  console.log(currentData)
+  const currentDay = new Date().getDay()
+  console.log(currentData, currentDay)
+
 
   return (
-    <div className="flex  ">
-      <div className="flex flex-col m-8 bg-slate-200 border-4 border-gray-200  p-8 shadow-lg w-96 ">
-        {loading ? (
-          <div>Loading...</div>
-        ) : error ? (
-          <div>Error: {error}</div>
-        ) : (
-          <>
-            <div className=" font-bold text-4xl  text-center ">
-              {currentData?.name},{currentData?.sys.country}
+    <div className="flex flex-col m-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-96 ">
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>Error: {error}</div>
+      ) : (
+        <>
+          <div className="flex flex-row text-lg items-center gap-1 text-center ">
+            <div className="flex justify-start items-center">
+              <FaLocationDot />{currentData?.name},{currentData?.sys.country}
             </div>
-            <div className=" font-bold text-3xl text-center p-3">
-              {currentData ? Math.round(currentData.main.temp) + "°C" : ""}
+            <div className="justify-end">
+              Today {currentDay}
             </div>
-            <div className=" font-bold text-center">
+          </div>
+          <div className="flex flex-col text-center p-3 items-between mt-10">
+            <div className=" text-7xl mb-4">
+              {currentData ? Math.round(currentData.main.temp) + "°" : ""}
+            </div>
+            <div className="text-center capitalize mb-10">
               {currentData ? currentData.weather[0].description : ""}
             </div>
-            <div className="flex justify-center">
-              <div className="space-x-6 items-center">
-                {fetchIcon(currentData ? currentData.weather[0].icon : "")}
+
+            <div className="flex mt-5 justify-between">
+              <div className="flex flex-row text-center gap-1 items-center justify-center">
+                <FaWater /> {currentData ? currentData.main.pressure + " hPa" : ""}
+              </div>
+              <div className="flex flex-row text-center gap-1 items-center justify-center">
+                <BsDroplet /> {currentData ? currentData.main.humidity + " %" : ""}
+              </div>
+              <div className="flex flex-row text-center gap-1 items-center justify-center">
+                <FaWind /> {currentData ? currentData.wind.speed + " km/h" : ""}
               </div>
             </div>
-            <div className="flex flex-row space-x-6 justify-center ">
-              <div className="">H:{currentData ? Math.round(currentData.main.temp_max) + "°C" : ""}</div>
-              <div className="">L:{currentData ? Math.round(currentData.main.temp_min) + "°C" : ""}</div>
-            </div>
-          </>
-        )}
-      </div>
+          </div>
+
+        </>
+      )}
     </div>
   );
 }

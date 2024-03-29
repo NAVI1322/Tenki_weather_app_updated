@@ -13,13 +13,17 @@ export interface WeatherData {
     }
   ];
   main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    humidity: number;
-  };
+    temp: number,
+    feels_like: number,
+    temp_min: number,
+    temp_max: number,
+    pressure: number,
+    humidity: number,
+
+  }
+  wind: {
+    speed: number,
+  }
   clouds: {
     all: number;
   };
@@ -56,6 +60,7 @@ export interface HourlyData {
   list: {
     dt: number;
     main: {
+      temp: number
       feels_like: number;
     };
     weather: {
