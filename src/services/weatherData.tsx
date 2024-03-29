@@ -59,9 +59,8 @@ export const currentWeather = async (location: string) => {
     const res = await axios.get<WeatherData>(BASE_URL + "weather?q=" + location + "&units=metric" + "&APPID=" + API_KEY)
     return res.data;
   } catch (err) {
-    
-    console.error('Error fetching data', err); // Log any errors that occur during the request
-    throw err; 
+    console.error('Error fetching data', err);
+    throw err;
   }
 }
 export const HourlyWeather = async (location: string) => {

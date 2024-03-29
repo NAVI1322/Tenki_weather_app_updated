@@ -16,12 +16,11 @@ export const DailyCard = () => {
   const [climateData, setClimateData] = useState<ClimateData | null>(null);
 
   const inputBoxValue = useRecoilValue(textState)
-  
+
 
   useEffect(() => {
     forecastWeather(inputBoxValue).then((data) => {
       if (data) {
-        
         setClimateData(data);
       }
     });
@@ -52,7 +51,7 @@ export const DailyCard = () => {
                 </p>
               </div>
             ))}
-          </div> 
+          </div>
         )}
       </div>
     </div>
