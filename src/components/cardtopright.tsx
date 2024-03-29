@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { currentWeather } from "../services//weatherData";
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
@@ -31,7 +32,7 @@ export function CurrentCard() {
         setWeather(weatherResponse.weather);
       } finally {
         setLoading(false);
-      } 
+      }
     };
 
     fetchData();
@@ -56,7 +57,7 @@ export function CurrentCard() {
               {Math.floor(Ctemp.temp)}°C
             </div>
             <div className="font-mono font-bold text-center">
-            {Cweather[0].description}
+              {Cweather[0].description}
             </div>
             <div className="flex justify-center">
               <div className="space-x-6 items-center">
