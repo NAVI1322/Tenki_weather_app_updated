@@ -35,7 +35,7 @@ export function CurrentCard() {
   }
 
   return (
-    <div className="flex flex-col m-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-96 ">
+    <div className="flex flex-col m-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-[610px] ">
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
