@@ -30,7 +30,7 @@ export function CurrentCard() {
         ) : (
           <>
             <div className="font-mono font-bold text-4xl  text-center ">
-              {inputBoxValue ? inputBoxValue : "Toronto"}
+              {currentData?.name},{currentData?.sys.country}
             </div>
             <div className="font-mono font-bold text-3xl text-center p-3">
               {currentData ? Math.round(currentData.main.temp) + "°C" : ""}
