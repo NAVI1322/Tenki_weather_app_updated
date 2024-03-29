@@ -1,37 +1,34 @@
-import { Appbar } from "./components/AppBar";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Contact from "./routes/Contact";
-import Team from "./routes/Team";
-import { RecoilRoot } from "recoil";
-import Home from "./Home";
-import "./index.css"
+import "./index.css";
 import { RightCard } from "./components/RightCard";
 import { DashBoard } from "./components/Dashboard";
+import { GridItems } from "./components/gridItems";
+import { CurrentCard } from "./components/CurrentCard";
+import { RecoilRoot } from "recoil";
+import { Appbar } from "./components/AppBar";
+import { Contact_details } from "./services/Contact";
+import Contact from "./routes/Contact";
 function App() {
   return (
-    <div>
-      <RecoilRoot>
-        <div>
-          <Router>
-            <div>
-              <Appbar />
-            </div>
-            <Routes>
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </Router>
+    <RecoilRoot>
+      <div className=" flex justify-center">
+        <DashBoard />
+       <div className="md:flex flex-col md:flex-row ">
+       <div className="flex flex-col mt-3 m-10 items-center ">
+          <Appbar />
+          <CurrentCard />
+          <GridItems />
         </div>
-      </RecoilRoot>
-      <RecoilRoot>
-        <div>
+        <div className="flex justify-center">
           <RightCard />
-          <DashBoard />
         </div>
-      </RecoilRoot>
-    </div>
+       </div>
+      </div>
+    </RecoilRoot>
+
+    // <div>
+    //   <Contact />
+    // </div>
   );
 }
 

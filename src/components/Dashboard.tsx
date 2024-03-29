@@ -2,7 +2,7 @@ import logo from "../imgs/logo/logo.png";
 
 export function DashBoard() {
   return (
-    <div className=" md:flex-col  md:w-[20%] md:h-screen hidden md:block md:border-r-2 ">
+    <div className=" md:flex-col  md:w-[20%] md:h-screen hidden md:block md:border-r-2  mt-3">
       <div className=" ml-10 mb-30 flex justify-center items-center ">
         <img src={logo} alt="" className="max-w-70" />
       </div>

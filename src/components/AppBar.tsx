@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 
 export function Appbar() {
-  const [Menu, Setmenu] = useState(true)
+  const [Menu, Setmenu] = useState(false)
 
   return (
     <div className='flex flex-row items-center gap-4 h-24 p-8'>
