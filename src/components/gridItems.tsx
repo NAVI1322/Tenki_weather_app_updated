@@ -16,7 +16,7 @@ export const GridItems = () => {
   }, [inputBoxValue]);
 
   return (
-    <div className="grid grid-cols-2 col-span-2 w-[610px] gap-5">
+    <div className="grid grid-cols-2 col-span-2 w-[610px] gap-5 ">
       <div className="h-[170px] w-[290px] rounded-xl bg-blue-100 font-semibold flex flex-col pl-6 pt-4 gap-4">
         <div className=" font-medium text-[18px]">{"Wind"}</div>
         <div className=" font-medium text-slate-400">{"Today wind speed"}</div>

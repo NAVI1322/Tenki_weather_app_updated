@@ -53,7 +53,8 @@ export function RightCard()
   }
 
     return (
-    <div className=" border-l-2  flex flex-col max-w-md items-center pl-5">
+  
+     <div className=" md:border-l-2  flex flex-col max-w-md items-center pl-5 ">
         <div className="mb-10 text-center">
           This Week
         </div>
@@ -85,10 +86,10 @@ export function RightCard()
 
     </div>
 
-    <div className="text-black flex flex-col   max-w-md mt-5">
-      <div className=" rounded-2xl p-2">
+    <div className="text-black flex flex-col  w-full mt-5">
+      <div className=" rounded-2xl">
         {climateData && (
-          <div className="flex flex-col gap-3 ">
+          <div className="flex flex-col space-y-4 ">
             {climateData.list.map((day: any, index: number) => (
               <div key={index} className="flex justify-between rounded-xl font-medium space-x-24 m-1 shadow-inner ">
                 <div className="flex items-center p-4">{(currentDay == new Date(day.dt * 1000).getDay()) ? "Today" : dayNames[new Date(day.dt * 1000).getDay()]}</div>
@@ -105,5 +106,6 @@ export function RightCard()
 
 
   </div>
+  
     )
 }

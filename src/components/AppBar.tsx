@@ -8,14 +8,10 @@ export function Appbar() {
 
   const [Menu, Setmenu] = useState(true);
   return (
-    <div className="  flex justify-between shadow-lg container items-center">
-      <div className="max-w-48">
-        <img src={logo} alt="logo" />
-      </div>
-
+    <div className="  flex  justify-between container items-center md:justify-center">
       <InputBox />
 
-      <div className="md:hidden pr-6 cursor-pointer" onClick={() => Setmenu(!Menu)}>
+      <div className="md:hidden cursor-pointer" onClick={() => Setmenu(!Menu)}>
         {!Menu
           ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -34,12 +30,6 @@ export function Appbar() {
           <li className='border-b border-3 hover:bg-blue-100'>Contact</li>
           <li className=' hover:bg-blue-100'>Team</li>
         </ul>
-      </div>
-
-      <div className=' items-center md:flex md:flex-row hidden space-x-10  mr-10'>
-        <Link to="/contact">Contact</Link>
-        <Link to="/team">Team</Link>
-        <Link to="/">Home</Link>
       </div>
 
     </div>)
