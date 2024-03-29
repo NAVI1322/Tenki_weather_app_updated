@@ -1,6 +1,6 @@
 
 
-export function Cards({Name , Expert_In ,twiter,insta})
+export function Cards({Name , Expert_In ,twiter, insta})
 {
     
     return ( 
