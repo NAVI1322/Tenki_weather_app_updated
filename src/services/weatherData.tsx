@@ -22,7 +22,11 @@ export interface WeatherData {
   clouds: {
     all: number,
   }
-  dt: number
+  sys: {
+    country: string,
+  }
+  dt: number;
+  name: string;
 }
 
 export interface ClimateData {

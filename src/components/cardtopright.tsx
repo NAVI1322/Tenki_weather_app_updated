@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { currentWeather } from "../services/weatherData";
+
+import { currentWeather } from "../services//weatherData";
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
 
@@ -39,7 +40,9 @@ export function CurrentCard() {
     fetchData();
   }, [inputBoxValue]);
 
-  console.log(Cweather)
+  console.log(Ctemp);
+  console.log(Cweather);
+
   return (
     <div className="flex  ">
       <div className="flex flex-col m-8 bg-slate-200 border-4 border-gray-200  p-8 shadow-lg w-96 ">

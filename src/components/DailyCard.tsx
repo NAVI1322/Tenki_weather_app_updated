@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
 
 
-const fetchIcon = (code: string) => {
+export const fetchIcon = (code: string) => {
   return <img src={`https://openweathermap.org/img/wn/${code}@2x.png`} alt="Icon" className=" h-[60px] w-[60px] " />
 
 }
