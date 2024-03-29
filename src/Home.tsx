@@ -7,10 +7,6 @@ const Home = () => {
     <div className=" flex flex-col mt-10 md:flex-row">
       <div className="md:w-[50%] flex items-center flex-col">
         <CurrentCard />
-        <HourlyCard />
-      </div>
-      <div>
-        <DailyCard />
       </div>
     </div>
   );
