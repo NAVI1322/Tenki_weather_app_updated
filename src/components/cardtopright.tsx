@@ -51,7 +51,7 @@ export function CurrentCard() {
           <div>Error: {error}</div>
         ) : (
           <>
-            <div className="font-mono font-bold text-4xl :">
+            <div className="font-mono font-bold text-4xl text-center ">
               {city},{countryName.country}
             </div>
             <div className="font-mono font-bold text-3xl text-center p-3">
