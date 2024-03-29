@@ -50,6 +50,7 @@ export interface HourlyData {
     }
     weather: {
       description: string,
+      icon: string,
     }[]
   }[]
 }
@@ -78,5 +79,9 @@ export const forecastWeather = async (location: string) => {
   } catch (err) {
     console.error("Error fetching data", err);
   }
+}
+
+export const fetchIcon = (code: string) => {
+  return <img src={`https://openweathermap.org/img/wn/${code}@2x.png`} alt="Icon" className=" h-[60px] w-[60px] " />
 }
 

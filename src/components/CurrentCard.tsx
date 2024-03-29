@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { WeatherData, currentWeather } from "../services/weatherData";
+import { WeatherData, currentWeather, fetchIcon } from "../services/weatherData";
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
 
@@ -9,15 +9,6 @@ export function CurrentCard() {
   const [error, setError] = useState(null);
   const inputBoxValue = useRecoilValue(textState)
 
-  const fetchIcon = (code: string) => {
-    return (
-      <img
-        src={`https://openweathermap.org/img/wn/${code}@2x.png`}
-        alt="Icon"
-        className=" h-[60px] w-[60px] "
-      />
-    );
-  };
 
   useEffect(() => {
     currentWeather(inputBoxValue).then((data) => {
@@ -26,6 +17,8 @@ export function CurrentCard() {
       }
     })
   }, [inputBoxValue]);
+
+  console.log(currentData)
 
   return (
     <div className="flex  ">
@@ -37,7 +30,7 @@ export function CurrentCard() {
         ) : (
           <>
             <div className="font-mono font-bold text-4xl  text-center ">
-              {inputBoxValue ? inputBoxValue : "Toronto"},{currentData?.sys.country}
+              {inputBoxValue ? inputBoxValue : "Toronto"}
             </div>
             <div className="font-mono font-bold text-3xl text-center p-3">
               {currentData ? Math.round(currentData.main.temp) + "°C" : ""}

@@ -1,22 +1,13 @@
 import { useEffect, useState } from "react";
-import { forecastWeather } from "../services/weatherData";
+import { forecastWeather, fetchIcon } from "../services/weatherData";
 import { ClimateData } from "../services/weatherData";
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
 
-
-export const fetchIcon = (code: string) => {
-  return <img src={`https://openweathermap.org/img/wn/${code}@2x.png`} alt="Icon" className=" h-[60px] w-[60px] " />
-
-}
-
 export const DailyCard = () => {
 
-
   const [climateData, setClimateData] = useState<ClimateData | null>(null);
-
   const inputBoxValue = useRecoilValue(textState)
-
 
   useEffect(() => {
     forecastWeather(inputBoxValue).then((data) => {

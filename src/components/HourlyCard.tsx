@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { HourlyData, HourlyWeather } from "../services/weatherData"
+import { HourlyData, HourlyWeather, fetchIcon } from "../services/weatherData"
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
 
@@ -9,18 +9,13 @@ export function HourlyCard() {
   const inputBoxValue = useRecoilValue(textState)
 
   useEffect(() => {
-    async function Hourly() {
-      await HourlyWeather(inputBoxValue).then(
-        (data) => {
-          if (data) {
-            sethourlyData(data)
-          }
-        }
-      )
-    }
-    Hourly()
-
+    HourlyWeather(inputBoxValue).then((data) => {
+      if (data) {
+        sethourlyData(data)
+      }
+    })
   }, [inputBoxValue])
+  console.log(hourlyData)
 
   function formatAMPM(date: Date) {
     let hours = date.getHours();
@@ -50,10 +45,7 @@ export function HourlyCard() {
                 </div>
               </div>
               <div className="flex flex-col items-center p-3">
-                <div className="" >
-                  feels like
-                </div>
-                {Math.round(hour.main.feels_like)}°C
+                {fetchIcon(hour.weather[0].icon)}
               </div>
             </div>
           ))}
