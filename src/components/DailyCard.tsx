@@ -29,7 +29,7 @@ export const DailyCard = () => {
   const currentDay = new Date().getDay();
 
   return (
-    <div className="text-black flex flex-col bg-slate-200 font-mono shadow-lg">
+    <div className="text-black flex flex-col bg-slate-200  shadow-lg">
       <p className=" p-2 bg-slate-400 w-full text-center">7-Days Forecast</p>
       <div className=" rounded-2xl p-2">
         {climateData && (

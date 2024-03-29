@@ -27,7 +27,7 @@ export function HourlyCard() {
   }
 
   return (
-    <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 max-w-md  bg-white  m-10 font-mono" >
+    <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 max-w-md  bg-white  m-10 " >
 
       {hourlyData && (
         <>

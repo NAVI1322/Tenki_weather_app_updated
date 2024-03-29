@@ -29,13 +29,13 @@ export function CurrentCard() {
           <div>Error: {error}</div>
         ) : (
           <>
-            <div className="font-mono font-bold text-4xl  text-center ">
+            <div className=" font-bold text-4xl  text-center ">
               {currentData?.name},{currentData?.sys.country}
             </div>
-            <div className="font-mono font-bold text-3xl text-center p-3">
+            <div className=" font-bold text-3xl text-center p-3">
               {currentData ? Math.round(currentData.main.temp) + "°C" : ""}
             </div>
-            <div className="font-mono font-bold text-center">
+            <div className=" font-bold text-center">
               {currentData ? currentData.weather[0].description : ""}
             </div>
             <div className="flex justify-center">
@@ -44,8 +44,8 @@ export function CurrentCard() {
               </div>
             </div>
             <div className="flex flex-row space-x-6 justify-center ">
-              <div className="font-mono">H:{currentData ? Math.round(currentData.main.temp_max) + "°C" : ""}</div>
-              <div className="font-mono">L:{currentData ? Math.round(currentData.main.temp_min) + "°C" : ""}</div>
+              <div className="">H:{currentData ? Math.round(currentData.main.temp_max) + "°C" : ""}</div>
+              <div className="">L:{currentData ? Math.round(currentData.main.temp_min) + "°C" : ""}</div>
             </div>
           </>
         )}

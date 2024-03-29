@@ -5,7 +5,7 @@ import Contact from "./routes/Contact";
 import Team from "./routes/Team";
 import { RecoilRoot } from "recoil";
 import Home from "./Home";
-
+import "./index.css"
 function App() {
   return (
     <RecoilRoot>
