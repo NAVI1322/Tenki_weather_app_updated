@@ -53,7 +53,7 @@ export function RightCard()
   }
 
     return (
-    <div className=" flex flex-col max-w-md items-center">
+    <div className=" border-l-2  flex flex-col max-w-md items-center pl-5">
         <div className="mb-10 text-center">
           This Week
         </div>
