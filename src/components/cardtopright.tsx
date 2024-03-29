@@ -42,15 +42,15 @@ export function CurrentCard() {
 
   return (
     <div className="flex  ">
-      <div className="flex flex-col m-8 bg-slate-200 border-4 border-gray-200  p-8 shadow-lg">
+      <div className="flex flex-col m-8 bg-slate-200 border-4 border-gray-200  p-8 shadow-lg w-96 ">
         {loading ? (
           <div>Loading...</div>
         ) : error ? (
           <div>Error: {error}</div>
         ) : (
           <>
-            <div className="font-mono font-bold text-4xl :">
-              City/CountryName
+            <div className="font-mono font-bold text-4xl  text-center ">
+              {inputBoxValue?inputBoxValue:"Toronto"}
             </div>
             <div className="font-mono font-bold text-3xl text-center p-3">
               {Math.floor(Ctemp.temp)}°C

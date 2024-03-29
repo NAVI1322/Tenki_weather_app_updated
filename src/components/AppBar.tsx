@@ -8,12 +8,12 @@ export function Appbar()
 {
 
     const [Menu,Setmenu] = useState(true)
-    const [inputValue,setInputValue]= useState("");
+   
 
     return (
     <div className="  flex justify-between shadow-lg container items-center">
         <div className="max-w-48">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" /> ,
         </div>
 
      <InputBox />
