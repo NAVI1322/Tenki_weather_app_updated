@@ -8,11 +8,9 @@ import Home from "./Home";
 import "./index.css"
 import { RightCard } from "./components/RightCard";
 import { DashBoard } from "./components/Dashboard";
-import { GridItems } from "./components/gridItems";
 function App() {
   return (
     <div>
-
       <RecoilRoot>
         <div>
           <Router>
@@ -31,7 +29,6 @@ function App() {
         <div>
           <RightCard />
           <DashBoard />
-          <GridItems />
         </div>
       </RecoilRoot>
     </div>

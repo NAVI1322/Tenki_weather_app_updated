@@ -4,6 +4,7 @@ import { textState } from '../atom/inputfields'
 import { useState } from "react";
 
 
+
 export function InputBox() {
   const [input, setInput] = useState("")
   const [text, setText] = useRecoilState(textState);
@@ -16,10 +17,10 @@ export function InputBox() {
     setText(input)
   }
 
-  return <div className=''>
+  return <div className=' '>
     <div className="relative">
-      <input type="text" className=' p-3 w-96  text-left' onChange={handleChange} placeholder='Search your city..' />
-      <button className="absolute  inset-y-0 right-0 px-4 py-2 bg-slate-400 text-white" onClick={handleSubmit} >
+      <input type="text" className='ring-gray-500 p-2 max-w-md border-2 text-left   focus:ring-2 outline-none rounded' onChange={handleChange} placeholder='Your city' />
+      <button className="absolute  inset-y-0 right-0 px-4 py-2 bg-blue-300  text-white font-semibold focus:ring-2 ring-slate-300" onClick={handleSubmit} >
         Search
       </button>
     </div>
