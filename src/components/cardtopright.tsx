@@ -28,8 +28,10 @@ export function CurrentCard() {
           currentWeather(inputBoxValue),
           currentWeather(inputBoxValue),
         ]);
+          
         setCtemp(tempResponse.main);
         setWeather(weatherResponse.weather);
+
       } finally {
         setLoading(false);
       }
