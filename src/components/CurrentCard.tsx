@@ -35,7 +35,7 @@ export function CurrentCard() {
   }
 
   return (
-    <div className="flex flex-col m-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-96 ">
+    <div className="flex flex-col m-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-[610px] ">
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
@@ -43,8 +43,8 @@ export function CurrentCard() {
       ) : (
         <>
           <div className="flex flex-row text-sm justify-between text-lg items-center gap-1 text-center ">
-            <div className="flex  items-center">
-              <FaLocationDot />{currentData?.name},{currentData?.sys.country}
+            <div className="flex  items-center gap-1">
+              <FaLocationDot /> {currentData?.name},{currentData?.sys.country}
             </div>
             <div className="flex ">
               Today {hourAMPM(currentData?.dt)}
