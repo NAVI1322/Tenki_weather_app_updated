@@ -22,8 +22,10 @@ export function CurrentCard() {
           currentWeather(inputBoxValue),
           currentWeather(inputBoxValue),
         ]);
+          
         setCtemp(tempResponse.main);
         setWeather(weatherResponse.weather);
+
         setCity(cityResponse.name);
         setCountry(countryResponse.sys);
       } finally {
@@ -42,7 +44,7 @@ export function CurrentCard() {
 
   return (
     <div className="flex  ">
-      <div className="flex flex-col m-8 bg-slate-200 border-4 border-gray-200  p-8 shadow-lg">
+      <div className="flex flex-col m-8 bg-slate-200 border-4 border-gray-200  p-8 shadow-lg w-96 ">
         {loading ? (
           <div>Loading...</div>
         ) : error ? (
@@ -53,7 +55,7 @@ export function CurrentCard() {
               {city},{countryName.country}
             </div>
             <div className="font-mono font-bold text-3xl text-center p-3">
-              {Math.floor(Ctemp.temp)}°C
+              {Math.round(Ctemp.temp)}°C
             </div>
             <div className="font-mono font-bold text-center">
               {Cweather[0].description}
@@ -64,8 +66,8 @@ export function CurrentCard() {
               </div>
             </div>
             <div className="flex flex-row space-x-6 justify-center ">
-              <div className="font-mono">H:{Math.floor(Ctemp.temp_max)}°C</div>
-              <div className="font-mono">L:{Math.floor(Ctemp.temp_min)}°C</div>
+              <div className="font-mono">H:{Math.round(Ctemp.temp_max)}°C</div>
+              <div className="font-mono">L:{Math.round(Ctemp.temp_min)}°C</div>
             </div>
           </>
         )}

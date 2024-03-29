@@ -8,12 +8,12 @@ export function Appbar()
 {
 
     const [Menu,Setmenu] = useState(true)
-    const [inputValue,setInputValue]= useState("");
+   
 
     return (
     <div className="  flex justify-between shadow-lg container items-center">
         <div className="max-w-48">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" /> ,
         </div>
 
      <InputBox />
@@ -30,10 +30,10 @@ export function Appbar()
       </div>
 
       <div className={!Menu?'fixed left-0 top-0  w-[80%] cursor-pointer bg-slate-100 h-screen border-y border-4 font-mono ease-in-out duration-700':'fixed left-[-100%] top-0  w-[60%]  border-r bg-slate-200 border-r-slate-400 h-full ease-in-out duration-700 font-mono'}>
-       <div className='font-bold text-3xl mt-48 mb-10 bg-blue-50'>
+       <div className='font-bold text-3xl mt-48 mb-10 bg-blue-50 text-center'>
                 Weather App
        </div>
-            <ul className="">
+            <ul className="flex flex-col items-center" >
                 <li className='border-b border-3 hover:bg-blue-100'>Contact</li>
                 <li className=' hover:bg-blue-100'>Team</li>
             </ul>
