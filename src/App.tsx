@@ -10,30 +10,27 @@ import { RightCard } from "./components/RightCard";
 import { DashBoard } from "./components/Dashboard";
 function App() {
   return (
-    <div>
-      <RecoilRoot>
-        <div>
-          <Router>
-            <div>
-              <Appbar />
-            </div>
-            <Routes>
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </Router>
-        </div>
-      </RecoilRoot>
-      <RecoilRoot>
-        <div>
-          {/* <RightCard /> */}
-          <DashBoard />
-        </div>
-      </RecoilRoot>
 
-    </div>
-  );
+    // <RecoilRoot>
+    //   <div>
+    //     <Router>
+    //       <div>
+    //         <Appbar />
+    //       </div>
+    //       <Routes>
+    //         <Route path="/contact" element={<Contact />} />
+    //         <Route path="/team" element={<Team />} />
+    //         <Route path="/" element={<Home />} />
+    //       </Routes>
+    //     </Router>
+    //   </div>
+    // </RecoilRoot>
+    <RecoilRoot>
+      <div>
+        <RightCard />
+        <DashBoard />
+      </div>
+      );
 }
 
-export default App;
+      export default App;
