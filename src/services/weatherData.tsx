@@ -17,7 +17,11 @@ export interface WeatherData {
     temp_min: number,
     temp_max: number,
     pressure: number,
-    humidity: number
+    humidity: number,
+
+  }
+  wind: {
+    speed: number,
   }
   clouds: {
     all: number,
