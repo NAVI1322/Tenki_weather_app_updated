@@ -26,7 +26,7 @@ function App() {
    // </RecoilRoot>
    <RecoilRoot>
    <div>
-      {/* <RightCard /> */}
+      <RightCard />
       <DashBoard />
     </div>
    </RecoilRoot>
