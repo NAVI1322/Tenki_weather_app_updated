@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { currentWeather } from "../services/weatherData";
+import { WeatherData, currentWeather } from "../services/weatherData";
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
 
 export function CurrentCard() {
-  const [Ctemp, setCtemp] = useState<any>({});
-  const [Cweather, setWeather] = useState<any>([{}]);
-  const [loading, setLoading] = useState(true);
+  const [currentData, setCurrentData] = useState<WeatherData | null>(null);
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null);
   const inputBoxValue = useRecoilValue(textState)
 
@@ -21,25 +20,13 @@ export function CurrentCard() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [tempResponse, weatherResponse] = await Promise.all<any>([
-          currentWeather(inputBoxValue),
-          currentWeather(inputBoxValue),
-        ]);
-
-        setCtemp(tempResponse.main);
-        setWeather(weatherResponse.weather);
-
-      } finally {
-        setLoading(false);
+    currentWeather(inputBoxValue).then((data) => {
+      if (data) {
+        setCurrentData(data)
       }
-    };
-
-    fetchData();
+    })
   }, [inputBoxValue]);
 
-  console.log(Cweather)
   return (
     <div className="flex  ">
       <div className="flex flex-col m-8 bg-slate-200 border-4 border-gray-200  p-8 shadow-lg w-96 ">
@@ -53,19 +40,19 @@ export function CurrentCard() {
               {inputBoxValue ? inputBoxValue : "Toronto"}
             </div>
             <div className="font-mono font-bold text-3xl text-center p-3">
-              {Math.round(Ctemp.temp)}°C
+              {currentData ? Math.round(currentData.main.temp) + "°C" : ""}
             </div>
             <div className="font-mono font-bold text-center">
-              {Cweather[0].description}
+              {currentData ? currentData.weather[0].description : ""}
             </div>
             <div className="flex justify-center">
               <div className="space-x-6 items-center">
-                {fetchIcon(Cweather[0].icon)}
+                {fetchIcon(currentData ? currentData.weather[0].icon : "")}
               </div>
             </div>
             <div className="flex flex-row space-x-6 justify-center ">
-              <div className="font-mono">H:{Math.round(Ctemp.temp_max)}°C</div>
-              <div className="font-mono">L:{Math.round(Ctemp.temp_min)}°C</div>
+              <div className="font-mono">H:{currentData ? Math.round(currentData.main.temp_max) + "°C" : ""}</div>
+              <div className="font-mono">L:{currentData ? Math.round(currentData.main.temp_min) + "°C" : ""}</div>
             </div>
           </>
         )}

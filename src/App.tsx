@@ -8,7 +8,7 @@ import {
   RecoilRoot
 } from 'recoil';
 
-import { CurrentCard } from "./components/cardtopright";
+import { CurrentCard } from "./components/CurrentCard";
 import { DailyCard } from "./components/DailyCard";
 import { HourlyCard } from "./components/HourlyCard";
 
