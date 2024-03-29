@@ -54,7 +54,7 @@ export function RightCard() {
   return (
 
     <div className=" md:border-l-2  flex flex-col max-w-md items-center mt-3  pl-5 ">
-      <div className="font-bold flex justify-start text-left text-xlmax-w-md">Today</div>
+      <div className="flex justify-between text-xl max-w-md">Today</div>
       <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 max-w-md bg-white mt-5" >
 
         {hourlyData && (
@@ -62,7 +62,7 @@ export function RightCard() {
             {hourlyData.list.map((hour: any, index: number) => (
               <div
                 key={index}
-                className="flex flex-col justify-between p-4 rounded-md shadow-m  font-medium"
+                className="flex flex-col items-center justify-between p-4 rounded-md shadow-m  font-medium"
               >
                 <div className="text-lg text-center mb-2 pr-6 pl-6">
                   {formatAMPM(new Date(hour.dt * 1000))}
@@ -100,7 +100,7 @@ export function RightCard() {
       </div>
 
 
-    </div>
+    </div >
 
   )
 }
