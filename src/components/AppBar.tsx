@@ -7,9 +7,7 @@ import { InputBox } from './InputBox'
 export function Appbar()
 {
 
-    const [Menu,Setmenu] = useState(true)
-   
-
+    const [Menu,Setmenu] = useState(true);
     return (
     <div className="  flex justify-between shadow-lg container items-center">
         <div className="max-w-48">
@@ -42,6 +40,7 @@ export function Appbar()
       <div className=' items-center font-mono md:flex md:flex-row hidden space-x-10  mr-10'>
            <Link to="/contact">Contact</Link>
            <Link to="/team">Team</Link>
+           <Link to="/">Home</Link>
         </div>
        
     </div>)
