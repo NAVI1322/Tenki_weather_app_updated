@@ -13,7 +13,7 @@ export function Appbar()
     return (
     <div className="  flex justify-between shadow-lg container items-center">
         <div className="max-w-48">
-            <img src={logo} alt="logo" /> ,
+            <img src={logo} alt="logo" /> 
         </div>
 
      <InputBox />

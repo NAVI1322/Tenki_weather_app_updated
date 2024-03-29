@@ -8,7 +8,8 @@ export function CurrentCard() {
   const [Ctemp, setCtemp] = useState<any>({});
   const [Cweather, setWeather] = useState<any>([{}]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
+  const [country,Setcountry] = useState("Ca")
   const inputBoxValue = useRecoilValue(textState)
 
   const fetchIcon = (code: string) => {
@@ -29,9 +30,16 @@ export function CurrentCard() {
           currentWeather(inputBoxValue),
         ]);
           
-        setCtemp(tempResponse.main);
-        setWeather(weatherResponse.weather);
-
+        if (tempResponse.cod === 404 && weatherResponse.cod === 404) {
+          setError('City not found');
+        } else {
+          setCtemp(tempResponse.main);
+          setWeather(weatherResponse.weather);
+          Setcountry(tempResponse.sys.country);
+        }
+      } catch (err) {
+        console.error('Error fetching data', err);
+        setError('Failed to fetch data');
       } finally {
         setLoading(false);
       }
@@ -40,20 +48,20 @@ export function CurrentCard() {
     fetchData();
   }, [inputBoxValue]);
 
-  console.log(Ctemp);
-  console.log(Cweather);
+
+  
 
   return (
     <div className="flex  ">
-      <div className="flex flex-col m-8 bg-slate-200 border-4 border-gray-200  p-8 shadow-lg w-96 ">
+      <div className="flex flex-col m-8 bg-slate-200 border-4 border-gray-200  p-8 shadow-lg w-96 max-wd-md ">
         {loading ? (
           <div>Loading...</div>
         ) : error ? (
-          <div>Error: {error}</div>
+          <div className="">Error: {error}</div>
         ) : (
           <>
             <div className="font-mono font-bold text-4xl  text-center ">
-              {inputBoxValue?inputBoxValue:"Toronto"}
+              {inputBoxValue?inputBoxValue:"Toronto"},{country}
             </div>
             <div className="font-mono font-bold text-3xl text-center p-3">
               {Math.round(Ctemp.temp)}°C

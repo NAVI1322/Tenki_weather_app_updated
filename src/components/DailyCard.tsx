@@ -21,7 +21,7 @@ export const DailyCard = () => {
   useEffect(() => {
     forecastWeather(inputBoxValue).then((data) => {
       if (data) {
-        console.log(data);
+        
         setClimateData(data);
       }
     });

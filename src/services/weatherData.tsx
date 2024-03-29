@@ -53,9 +53,6 @@ export interface HourlyData {
 export const currentWeather = async (location: string) => {
   try {
     const res = await axios.get<WeatherData>(BASE_URL + "weather?q=" + location + "&units=metric" + "&APPID=" + API_KEY)
-    // Return the weather data if no error occurred
-  
-  
     return res.data;
   } catch (err) {
     
