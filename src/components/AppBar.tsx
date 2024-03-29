@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 
 export function Appbar() {
-  const [Menu, Setmenu] = useState(false)
+  const [Menu, Setmenu] = useState(true)
 
   return (
     <div className='flex flex-row items-center gap-4 h-24 p-8'>
@@ -35,11 +35,6 @@ export function Appbar() {
         </ul>
       </div>
 
-      <div className=' items-center font-mono md:flex md:flex-row hidden space-x-10  mr-10'>
-        <Link to="/contact">Contact</Link>
-        <Link to="/team">Team</Link>
-        <Link to="/">Home</Link>
-      </div>
 
     </div>
   )
