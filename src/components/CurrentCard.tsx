@@ -19,7 +19,9 @@ export function CurrentCard() {
     })
   }, [inputBoxValue]);
 
-  console.log(currentData)
+  const currentDay = new Date().getDay()
+  console.log(currentData, currentDay)
+
 
   return (
     <div className="flex flex-col m-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-96 ">
@@ -30,7 +32,12 @@ export function CurrentCard() {
       ) : (
         <>
           <div className="flex flex-row text-lg items-center gap-1 text-center ">
-            <FaLocationDot />{currentData?.name},{currentData?.sys.country}
+            <div className="flex justify-start items-center">
+              <FaLocationDot />{currentData?.name},{currentData?.sys.country}
+            </div>
+            <div className="justify-end">
+              Today {currentDay}
+            </div>
           </div>
           <div className="flex flex-col text-center p-3 items-between mt-10">
             <div className=" text-7xl mb-4">
