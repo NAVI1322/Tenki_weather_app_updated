@@ -3,11 +3,11 @@ import logo from "../imgs/logo/logo.png";
 export function DashBoard() {
   return (
     <div className=" md:flex-col  md:w-[20%] md:h-screen hidden md:block md:border-r-2  mt-3">
-      <div className=" ml-10 mb-30 flex justify-center items-center ">
+      <div className="mb-20">
         <img src={logo} alt="" className="max-w-70" />
       </div>
 
-      <div className="p-4 ml-10 mt-10 hover:shadow-xl rounded-lg cursor-pointer">
+      <div className="p-4 mt-10 hover:shadow-md hover:bg-blue-50 rounded-lg cursor-pointer">
        <div className="flex flex-row space-x-5 ">
            <div className="">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6  text-gray-400">
@@ -17,7 +17,7 @@ export function DashBoard() {
            <div className="  text-gray-400 ">DashBoard</div>
        </div>
       </div>
-      <div className="p-4  ml-10 mt-10 hover:shadow-xl rounded-lg  cursor-pointer">
+      <div className="p-4   mt-10 hover:shadow-xl rounded-md  hover:bg-blue-50 cursor-pointer">
        <div className="flex flex-row space-x-5">
            <div className="">
            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 text-gray-400">
@@ -28,7 +28,7 @@ export function DashBoard() {
            <div className="  text-gray-400">Team</div>
        </div>
       </div>
-      <div className="p-4  ml-10 mt-10 hover:shadow-xl rounded-lg cursor-pointer">
+      <div className="p-4   mt-10 hover:shadow-xl rounded-md  hover:bg-blue-50 cursor-pointer">
        <div className="flex flex-row space-x-5">
            <div className="">
            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6  text-gray-400">

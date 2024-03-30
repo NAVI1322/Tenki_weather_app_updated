@@ -16,7 +16,8 @@ export const GridItems = () => {
   }, [inputBoxValue]);
 
   return (
-    <div className="grid grid-cols-2 col-span-2 md:w-[610px] gap-5 ">
+    <div className="flex items-center justify-center">
+      <div className="grid grid-cols-2 col-span-2 md:w-[610px] gap-5 ">
       <div className=" rounded-xl bg-blue-50 flex flex-col p-6 gap-4">
         <div className=" font-medium text-[18px]">{"Wind"}</div>
         <div className=" font-medium text-slate-400">{"Today wind speed"}</div>
@@ -41,6 +42,7 @@ export const GridItems = () => {
           <div><p className=" text-slate-400">Night</p>{weather && Math.round(weather?.list[0].temp.night)}°C</div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -6,15 +6,16 @@ import { GridItems } from "./components/gridItems";
 import { CurrentCard } from "./components/CurrentCard";
 import { RecoilRoot } from "recoil";
 import { Appbar } from "./components/AppBar";
-import { Contact_details } from "./services/Contact";
-import Contact from "./routes/Contact";
+
+
+
 function App() {
   return (
     <RecoilRoot>
-      <div className=" flex justify-center">
+      <div className=" flex ">
         <DashBoard />
        <div className="md:flex flex-col md:flex-row ">
-       <div className="flex flex-col mt-3 m-10 items-center ">
+       <div className="flex flex-col justify-center items-center ">
           <Appbar />
           <CurrentCard />
           <GridItems />
