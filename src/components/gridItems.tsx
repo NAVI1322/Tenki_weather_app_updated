@@ -20,7 +20,7 @@ export const GridItems = () => {
       <div className=" rounded-xl bg-blue-50 flex flex-col p-6 gap-4">
         <div className=" font-medium text-[18px]">{"Wind"}</div>
         <div className=" font-medium text-slate-400">{"Today wind speed"}</div>
-        <div>{weather?.list[0].speed}km/h</div>
+        <div>{Math.round(weather ? weather?.list[0].speed * 3.6 : 0)} km/h</div>
       </div>
       <div className=" rounded-xl bg-blue-50  flex flex-col p-6 gap-4 ">
         <div className=" font-medium text-[18px]">{"Humidity"}</div>

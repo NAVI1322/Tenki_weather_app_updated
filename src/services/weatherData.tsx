@@ -101,7 +101,7 @@ export const forecastWeather = async (location: string) => {
       BASE_URL +
         "forecast/climate?q=" +
         location +
-        "&cnt=7&&units=metric&" +
+        "&cnt=9&&units=metric&" +
         "&APPID=" +
         API_KEY
     );

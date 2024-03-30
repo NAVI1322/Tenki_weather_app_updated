@@ -35,7 +35,7 @@ export function CurrentCard() {
   }
 
   return (
-    <div className="flex flex-col m-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-[610px] ">
+    <div className="flex flex-col mx-8 mb-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-[470px] md:w-[38rem] ">
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
@@ -47,7 +47,7 @@ export function CurrentCard() {
               <FaLocationDot /> {currentData?.name},{currentData?.sys.country}
             </div>
             <div className="flex ">
-              Today {hourAMPM(currentData?.dt)}
+              Today {hourAMPM(currentData ? currentData?.dt : 0)}
             </div>
           </div>
           <div className="flex flex-col text-center p-3 items-between mt-10">
@@ -66,7 +66,7 @@ export function CurrentCard() {
                 <BsDroplet /> {currentData ? currentData.main.humidity + " %" : ""}
               </div>
               <div className="flex flex-row text-center gap-1 items-center justify-center">
-                <FaWind /> {currentData ? currentData.wind.speed + " km/h" : ""}
+                <FaWind /> {currentData ? Math.round(currentData.wind.speed * 3.6) + " km/h" : ""}
               </div>
             </div>
           </div>

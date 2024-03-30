@@ -9,7 +9,7 @@ export function Appbar() {
   const [Menu, Setmenu] = useState(true)
 
   return (
-    <div className='flex flex-row items-center w-[610px] gap-4 h-24 p-2'>
+    <div className='flex flex-row items-center w-[470px] md:w-[38rem] gap-4 h-24 p-2'>
       <div>
         <FaSearch />
       </div>
