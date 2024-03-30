@@ -1,5 +1,5 @@
-import logo from '../imgs/logo/logo.png'
-import { Link } from 'react-router-dom'
+
+
 import { InputBox } from './InputBox'
 import { FaSearch } from 'react-icons/fa'
 import { useState } from 'react'
@@ -9,7 +9,7 @@ export function Appbar() {
   const [Menu, Setmenu] = useState(true)
 
   return (
-    <div className='flex flex-row items-center w-[470px] md:w-[38rem] gap-4 h-24 p-2'>
+    <div className='flex flex-row items-center justify-center w-[470px] md:w-[38rem]' >
       <div>
         <FaSearch />
       </div>

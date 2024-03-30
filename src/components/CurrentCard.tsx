@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
-import { WeatherData, currentWeather, fetchIcon } from "../services/weatherData";
+import { WeatherData, currentWeather} from "../services/weatherData";
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
 import { FaLocationDot, FaWater, FaWind } from "react-icons/fa6";
 import { BsDroplet } from "react-icons/bs";
 
 export function CurrentCard() {
-  const [currentData, setCurrentData] = useState<WeatherData | null>(null);
+  const [currentData, setCurrentData] = useState<WeatherData | null >(null);
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null);
   const inputBoxValue = useRecoilValue(textState)
+
+
+
+
+
+
+  
 
   useEffect(() => {
     currentWeather(inputBoxValue).then((data) => {
@@ -35,16 +42,16 @@ export function CurrentCard() {
   }
 
   return (
-    <div className="flex flex-col mx-8 mb-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg w-[470px] md:w-[38rem] ">
+    <div className="flex flex-col m-8 text-primaryBlue bg-secondaryBlue rounded-lg p-4 shadow-lg md:w-[610px] w-[500px] justify-center">
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
         <div>Error: {error}</div>
       ) : (
         <>
-          <div className="flex flex-row text-sm justify-between text-lg items-center gap-1 text-center ">
+          <div className="flex flex-row text-sm justify-between  items-center gap-1 text-center ">
             <div className="flex  items-center gap-1">
-              <FaLocationDot /> {currentData?.name},{currentData?.sys.country}
+              <FaLocationDot /> {currentData?.name}, {currentData?.sys.country}
             </div>
             <div className="flex ">
               Today {hourAMPM(currentData ? currentData?.dt : 0)}

@@ -30,7 +30,7 @@ export interface WeatherData {
   sys: {
     country: string;
   };
-  dt: number;
+  dt: number | any;
   name: string;
 }
 
@@ -70,23 +70,75 @@ export interface HourlyData {
   }[];
 }
 
-export const currentWeather = async (location: string) => {
-  try {
-    const res = await axios.get<WeatherData>(
-      BASE_URL + "weather?q=" + location + "&units=metric" + "&APPID=" + API_KEY
-    );
-    return res.data;
-  } catch (err) {
-    console.error("Error fetching data", err);
-    throw err;
+   const  getNavigations = () => {
+  
+    return new Promise<{ latitude: number; longitude: number }>((resolve, reject) => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            
+            
+            resolve({ latitude, longitude });
+          },
+          function (error) {
+            console.error("Error getting location:", error.message);
+            reject(error);
+          }
+        );
+      } else {
+        reject(new Error("Geolocation not supported"));
+      }
+    });
+  };
+
+ 
+        
+  async function getLocation ()
+  {
+    const  {longitude , latitude }:any =  await getNavigations();
+    try {
+      
+      const response = await axios.get(
+        `${BASE_URL}forecast/climate?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+      );
+      return response.data.city.name;
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
   }
-};
+
+
+  export const currentWeather = async (location: string) => {
+    try {
+
+      const GetCityName = await getLocation()
+ 
+      const CityName = location?location:GetCityName;
+
+
+      const res = await axios.get<WeatherData>(
+        BASE_URL + "weather?q=" + CityName + "&units=metric" + "&APPID=" + API_KEY
+      );
+      return res.data;
+    } catch (err) {
+      console.error("Error fetching data", err);
+      throw err;
+    }
+  };
+
 export const HourlyWeather = async (location: string) => {
   try {
+
+    const GetCityName = await getLocation()
+ 
+    const CityName = location?location:GetCityName;
+
     const res = await axios.get<HourlyData>(
       BASE_URL +
         "forecast/hourly?q=" +
-        location +
+        CityName +
         "&cnt=24&units=metric&APPID=" +
         API_KEY
     );
@@ -97,6 +149,11 @@ export const HourlyWeather = async (location: string) => {
 };
 export const forecastWeather = async (location: string) => {
   try {
+
+    const GetCityName = await getLocation()
+ 
+    const CityName = location?location:GetCityName;
+
     const res = await axios.get<ClimateData>(
       BASE_URL +
         "forecast/climate?q=" +
