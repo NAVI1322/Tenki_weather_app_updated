@@ -1,23 +1,15 @@
-import { useEffect, useState } from "react";
-import { WeatherData, currentWeather } from "../services/weatherData";
+import { useState } from "react";
+import { WeatherData } from "../services/weatherData";
 import { useRecoilValue } from "recoil";
-import { textState } from "../atom/inputfields";
+import { textState } from "../atom/globalState";
 import { FaLocationDot, FaWater, FaWind } from "react-icons/fa6";
 import { BsDroplet } from "react-icons/bs";
 import Skeleton from "react-loading-skeleton";
 
-export function CurrentCard() {
-  const [currentData, setCurrentData] = useState<WeatherData | null>(null);
+export function CurrentCard({ currentData }: { currentData: WeatherData | null }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null);
   const inputBoxValue = useRecoilValue(textState)
-
-  useEffect(() => {
-    currentWeather(inputBoxValue).then((data) => {
-      setCurrentData(data)
-    })
-
-  }, [inputBoxValue]);
 
   function hourAMPM(dt: number) {
     const date = new Date(dt * 1000);

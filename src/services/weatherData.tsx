@@ -70,6 +70,22 @@ export interface HourlyData {
   }[];
 }
 
+const getCoords = () => {
+  return new Promise<{ latitude: number; longitude: number }>((res, req) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(latitude, "coords")
+        res({ latitude, longitude })
+      },
+        (err) => {
+          console.log("Error getting user location")
+          req(err)
+        });
+    }
+  })
+}
 const getNavigations = () => {
 
   return new Promise<{ latitude: number; longitude: number }>((resolve, reject) => {
@@ -78,6 +94,8 @@ const getNavigations = () => {
         function(position) {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
+
+
           resolve({ latitude, longitude });
         },
         function(error) {
@@ -109,10 +127,10 @@ async function getLocation() {
 
 export const currentWeather = async (location: string) => {
   try {
-
+    const { latitude, longitude } = await getCoords()
+    console.log(latitude, longitude, "current")
     const GetCityName = await getLocation()
     const CityName = location ? location : GetCityName;
-
 
     const res = await axios.get<WeatherData>(
       BASE_URL + "weather?q=" + CityName + "&units=metric" + "&APPID=" + API_KEY
@@ -147,7 +165,6 @@ export const forecastWeather = async (location: string) => {
   try {
 
     const GetCityName = await getLocation()
-
     const CityName = location ? location : GetCityName;
 
     const res = await axios.get<ClimateData>(
