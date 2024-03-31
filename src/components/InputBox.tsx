@@ -1,13 +1,13 @@
 
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState, useRecoilState } from "recoil";
 import { textState } from '../atom/globalState'
 import { useState } from "react";
 
 
 export function InputBox() {
   const [input, setInput] = useState("")
-  const setText = useSetRecoilState(textState);
 
+  const [_, setText] = useRecoilState(textState);
 
   const handleChange = (event: any) => {
     setInput(event.target.value);

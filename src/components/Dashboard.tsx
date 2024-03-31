@@ -2,7 +2,7 @@ import logo from "../imgs/logo/logo.jpeg";
 
 export function DashBoard() {
   return (
-    <div className=" md:flex-col text-neutral-800 max-w-47 md:w-[17%] md:h-screen hidden md:block md:border-r-2 px-7 py-6">
+    <div className=" md:flex md:flex-col text-neutral-800 md:h-screen max-w-[28%] hidden md:border-r-2 px-7 md:border-l py-6">
       <div className="flex flex-row items-center justify-start gap-4 mb-20">
         <img src={logo} alt="" className="max-w-70 rounded-full" />
         <div className="text-3xl font-bold">Tenki</div>
@@ -26,7 +26,7 @@ export function DashBoard() {
             </svg>
 
           </div >
-          <div className="text-neutral-400 text-lg font-medium">Team</div>
+          <div className="text-neutral-400 text-lg font-medium">Team members</div>
         </div>
       </div>
       <div className="p-3  mt-10 hover:shadow-xl rounded-md  hover:bg-blue-50 ease-in-out duration-300  cursor-pointer">
