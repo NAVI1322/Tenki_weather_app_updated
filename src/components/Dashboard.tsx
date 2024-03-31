@@ -2,7 +2,7 @@ import logo from "../imgs/logo/logo.jpeg";
 
 export function DashBoard() {
   return (
-    <div className=" md:flex-col text-neutral-800 max-w-47 md:w-[17%] md:h-screen hidden md:block md:border-r-2 px-7 py-6">
+    <div className=" md:flex-col text-neutral-800 max-w-47 md:w-[17%]   md:h-screen hidden md:block md:border-r-2 px-7  border-l py-6">
       <div className="flex flex-row items-center justify-start gap-4 mb-20">
         <img src={logo} alt="" className="max-w-70 rounded-full" />
         <div className="text-3xl font-bold">Tenki</div>

@@ -8,10 +8,12 @@ import { RecoilRoot } from "recoil";
 import { Appbar } from "./components/AppBar";
 
 
-
 function App() {
+
+
   return (
     <RecoilRoot>
+  
       <div className=" flex ">
         <DashBoard />
        <div className="md:flex flex-col md:flex-row ">
@@ -24,7 +26,8 @@ function App() {
           <RightCard />
         </div>
        </div>
-      </div>
+      </div>  
+    
     </RecoilRoot>
 
     // <div>
