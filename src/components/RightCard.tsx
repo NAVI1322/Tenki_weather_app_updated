@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react"
-import { HourlyData, HourlyWeather, fetchIcon, forecastWeather } from "../services/weatherData"
+import { HourlyData, HourlyWeather, WeatherData, currentWeather, fetchIcon, forecastWeather } from "../services/weatherData"
 import { useRecoilValue } from "recoil";
 import { textState } from "../atom/inputfields";
 import { ClimateData } from "../services/weatherData";
@@ -11,6 +11,7 @@ export function RightCard() {
   const [hourlyData, sethourlyData] = useState<HourlyData | null>(null)
   const inputBoxValue = useRecoilValue(textState)
   const [climateData, setClimateData] = useState<ClimateData | null>(null);
+  const [currentData, setCurrentData] = useState<WeatherData | null>(null);
 
 
   useEffect(() => {
@@ -19,7 +20,12 @@ export function RightCard() {
         setClimateData(data);
         console.log(data)
       }
+      currentWeather(inputBoxValue).then((data) => {
+        setCurrentData(data);
+        console.log(data);
+      })
     });
+
   }, [inputBoxValue]);
   const dayNames = [
     "Sunday",
@@ -56,7 +62,20 @@ export function RightCard() {
     <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 md:mt-10 mt-14 ">
       <div className="flex justify-between text-xl max-w-sm">This Week</div>
       <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 max-w-md bg-white mt-5 " >
-
+      <div
+                
+                className="flex flex-col items-center justify-between p-4 rounded-xl hover:bg-secondaryBlue cursor-pointer"
+              >
+                <div className="text-lg text-center mb-2 pr-6 pl-6">
+                  {formatAMPM(new Date(currentData?.dt * 1000)) ? "Now" : ""}
+                </div>
+                <div className="text-center mb-2 ">
+                  {fetchIcon(currentData ?currentData?.weather[0].icon: "")}
+                </div>
+                <div className="text-xl font-medium text-center pr-6 pl-6">
+                  {Math.round(currentData ?currentData?.main.temp:0)}°C
+                </div>
+              </div>
         {hourlyData && (
           <>
             {hourlyData.list.map((hour: any, index: number) => (
