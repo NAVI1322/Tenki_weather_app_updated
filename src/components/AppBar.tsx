@@ -11,10 +11,11 @@ export function Appbar() {
   
 
   return (
-    <div className='flex flex-row items-center justify-start w-[470px] md:w-[38rem] mt-6' >
-      <div>
+    <div className='flex flex-row items-center justify-start w-[470px] md:w-[38rem] m-10'  >
+      <div >
         <FaSearch />
       </div>
+      <div className="flex justify-between items-center">
       <InputBox />
       <div className="md:hidden pr-6 cursor-pointer" onClick={() => Setmenu(!Menu)}>
            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
@@ -22,8 +23,9 @@ export function Appbar() {
           </svg>
 
       </div>
+      </div>
 
-      <div className={!Menu ? 'fixed left-0 top-0  w-[80%] cursor-pointer bg-white h-screen border-y border-4 font-mono ease-in-out duration-1000' : 'fixed left-[-100%] top-0  w-[60%]  border-r bg-slate-200 border-r-slate-400 h-full ease-in-out duration-700 font-mono'}>
+      <div className={!Menu ? 'fixed left-0 top-0  w-[80%] cursor-pointer  bg-white h-screen border-y border-4 font-mono ease-in-out duration-1000' : 'fixed left-[-100%] top-0  w-[60%]  border-r bg-slate-200 border-r-slate-400 h-full ease-in-out duration-700 font-mono'}>
           <div className='flex justify-end p-10' onClick={() => Setmenu(!Menu)}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />

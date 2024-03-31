@@ -38,7 +38,7 @@ export function CurrentCard() {
   }
 
   return (
-    <div className="flex flex-col m-8 text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg w-[500px] md:w-[610px]  md:h-[320px] justify-center">
+    <div className="flex flex-col m-8 text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg  md:w-[610px]  md:h-[320px] justify-center">
       {loading ? ( // Render skeleton loader while loading
         <>
           <div className='flex space-x-2 justify-center items-center'>
@@ -51,13 +51,13 @@ export function CurrentCard() {
         </> 
       ) : (
         <>
-          <div className="flex flex-row text-md justify-between  items-center gap-1 text-center ">
-            <div className="flex  items-center gap-1">
-              <FaLocationDot /> {currentData?.name}, {currentData?.sys.country}
+          <div className="flex flex-row text-md  justify-between">
+            <div className="flex items-center">
+              <FaLocationDot />  {currentData?.name}, {currentData?.sys.country}
             </div>
-            <div className="flex ">Today {hourAMPM(currentData ? currentData?.dt : 0)}</div>
+            <div className="flex">Today {hourAMPM(currentData ? currentData?.dt : 0)}</div>
           </div>
-          <div className="flex flex-col text-center p-3 items-between mt-10">
+          <div className="flex flex-col text-center p-3 items-between mt-10 ">
             <div className=" text-7xl mb-4">
               {(currentData ? Math.round(currentData.main.temp) + "°" : "") || <Skeleton />}
             </div>
@@ -65,14 +65,14 @@ export function CurrentCard() {
               {currentData ? currentData.weather[0].description : ""}
             </div>
 
-            <div className="flex mt-5 justify-between">
+            <div className="flex mt-5 justify-between space-x-10">
               <div className="flex flex-row text-center gap-1 items-center justify-center">
                 <FaWater /> {currentData ? currentData.main.pressure + " hPa" : ""}
               </div>
               <div className="flex flex-row text-center gap-1 items-center justify-center">
                 <BsDroplet /> {currentData ? currentData.main.humidity + " %" : ""}
               </div>
-              <div className="flex flex-row text-center gap-1 items-center justify-center">
+              <div className="flex flex-row text-center gap-1 items-center justify-center ">
                 <FaWind /> {currentData ? Math.round(currentData.wind.speed * 3.6) + " km/h" : ""}
               </div>
             </div>
