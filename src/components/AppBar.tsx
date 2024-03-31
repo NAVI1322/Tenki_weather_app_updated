@@ -11,13 +11,13 @@ export function Appbar() {
   
 
   return (
-    <div className='flex flex-row items-center justify-start w-[470px] md:w-[38rem] m-10'  >
-      <div >
+    <div className='flex flex-row items-center justify-start m-10'  >
+      <div>
         <FaSearch />
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex  items-center">
       <InputBox />
-      <div className="md:hidden pr-6 cursor-pointer" onClick={() => Setmenu(!Menu)}>
+      <div className="md:hidden pr-6 cursor-pointer flex justify-end" onClick={() => Setmenu(!Menu)}>
            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
           </svg>

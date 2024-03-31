@@ -51,7 +51,7 @@ export function CurrentCard() {
         </> 
       ) : (
         <>
-          <div className="flex flex-row text-md  justify-between">
+          <div className="flex flex-row text-md justify-between">
             <div className="flex items-center">
               <FaLocationDot />  {currentData?.name}, {currentData?.sys.country}
             </div>
