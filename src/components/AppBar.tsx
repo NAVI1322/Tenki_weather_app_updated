@@ -6,10 +6,11 @@ import { useState } from 'react'
 
 
 export function Appbar() {
-  const [Menu, Setmenu] = useState(true)
+  const [Menu, Setmenu] = useState(true);
+  
 
   return (
-    <div className='flex flex-row items-center justify-start w-[470px] md:w-[38rem]' >
+    <div className='flex flex-row items-center justify-start w-[470px] md:w-[38rem] mt-6' >
       <div>
         <FaSearch />
       </div>
