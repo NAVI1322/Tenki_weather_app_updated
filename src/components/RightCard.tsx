@@ -53,8 +53,8 @@ export function RightCard() {
   }
 
   return (
-    <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 md:mt-10 mt-14 ">
-      <div className="flex justify-between text-xl max-w-sm font-sans">This Week</div>
+    <div className="flex border-l-1 flex-col max-w-md justify-end pl-5 md:mt-10 mt-14  ">
+      <div className="flex justify-center text-xl max-w-sm font-sans ">This Week</div>
       {loading
          ? <div className="mb-6 mt-6 shadow-sm  md:w-[400px] md:h-[160px] w-[200px] h-[100px] rounded-lg flex items-center justify-center"><Loading /></div> 
         :

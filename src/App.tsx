@@ -14,19 +14,21 @@ function App() {
   return (
     <RecoilRoot>
   
-      <div className=" flex ">
+
+   <div className=" md:flex flex-row  ">
         <DashBoard />
-       <div className="md:flex flex-col md:flex-row ">
+
        <div className="flex flex-col justify-center items-center ">
           <Appbar />
           <CurrentCard />
           <GridItems />
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center md:block">
           <RightCard />
         </div>
-       </div>
+      
       </div>  
+
     
     </RecoilRoot>
 
