@@ -15,10 +15,10 @@ function App() {
     <RecoilRoot>
   
 
-   <div className=" md:flex flex-row  ">
+   <div className=" md:flex flex-row md:space-x-10  ">
         <DashBoard />
 
-       <div className="flex flex-col justify-center  ">
+       <div className="flex flex-col justify-center items-center ">
           <Appbar />
           <CurrentCard />
           <GridItems />

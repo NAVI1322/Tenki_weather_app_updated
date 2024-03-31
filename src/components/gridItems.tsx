@@ -20,7 +20,7 @@ export const GridItems = () => {
   }, [inputBoxValue]);
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex  justify-center">
       
       <div className="grid grid-cols-2 col-span-2 md:w-[610px] gap-5 ">
         {loading
@@ -49,7 +49,7 @@ export const GridItems = () => {
         </div>
         }
          {loading
-        ?<div className="  bg-blue-100 md:w-[300px] md:h-[160px] rounded-lg flex items-center justify-center w-[250px] h-[120px]"><Loading /></div>
+        ?<div className="  bg-blue-100 md:w-[100%] md:h-[160px] rounded-lg flex items-center justify-center w-[100%] h-[120px]"><Loading /></div>
         :
         <div className=" rounded-xl bg-blue-50 flex flex-col p-6 ">
           <div className=" font-medium text-[18px] ">{"Today Temperatures"}</div>

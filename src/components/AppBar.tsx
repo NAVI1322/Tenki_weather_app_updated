@@ -11,7 +11,7 @@ export function Appbar() {
   
 
   return (
-    <div className='flex flex-row items-center justify-start'  >
+    <div className='flex flex-row md:justify-start justify-center md:ml-10 items-center gap-1 mt-6 md:mt-0'  >
       <div>
         <FaSearch />
       </div>
