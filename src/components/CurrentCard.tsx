@@ -1,12 +1,14 @@
-import { useState } from "react";
+
 import { WeatherData } from "../services/weatherData";
 import { FaLocationDot, FaWater, FaWind } from "react-icons/fa6";
 import { BsDroplet } from "react-icons/bs";
 import Skeleton from "react-loading-skeleton";
+import {  Loading } from "../atom/loading";
+import { useRecoilValue } from "recoil";
 
 export function CurrentCard({ currentData }: { currentData: WeatherData | null }) {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null);
+
+  const loading = useRecoilValue(Loading);
 
   function hourAMPM(dt: number) {
     const date = new Date(dt * 1000);

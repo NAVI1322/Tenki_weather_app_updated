@@ -1,7 +1,9 @@
+import { useRecoilValue } from "recoil";
+import { Loading } from "../atom/loading";
 import { HourlyData, WeatherData, fetchIcon } from "../services/weatherData"
 import { ClimateData } from "../services/weatherData";
-import { Loading } from "./Loading";
-import { useState } from "react"
+import { LoadingElement } from "./Loading";
+
 
 export function RightCard(
   { hourlyData, climateData, currentData }: {
@@ -10,7 +12,8 @@ export function RightCard(
     currentData: WeatherData | null
   }
 ) {
-  const [loading, setLoading] = useState(false);
+
+  const loading = useRecoilValue(Loading)
 
   const dayNames = [
     "Sunday",
@@ -39,7 +42,7 @@ export function RightCard(
     <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 md:mt-10 mt-14 ">
       <div className="flex justify-between text-xl max-w-sm">This Week</div>
       {loading
-        ? <div className="mb-6 mt-6 shadow-sm  md:w-[400px] md:h-[160px] w-[200px] h-[100px] rounded-lg flex items-center justify-center"><Loading /></div>
+        ? <div className="mb-6 mt-6 shadow-sm  md:w-[400px] md:h-[160px] w-[200px] h-[100px] rounded-lg flex items-center justify-center"><LoadingElement /></div>
         :
         <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 max-w-md bg-white mt-5 " >
           <div
@@ -81,7 +84,7 @@ export function RightCard(
       }
       <div className="text-neutral-800 flex flex-col  w-full mt-5">
         {loading
-          ? <div className="mb-6 mt-6 shadow-sm md:w-[400px] md:h-[500px] rounded-lg flex items-center justify-center"><Loading /></div>
+          ? <div className="mb-6 mt-6 shadow-sm md:w-[400px] md:h-[500px] rounded-lg flex items-center justify-center"><LoadingElement /></div>
           :
           <div className="rounded-2xl">
             {climateData && (

@@ -1,6 +1,6 @@
 
 
-export function Loading()
+export function LoadingElement()
 
 {
 

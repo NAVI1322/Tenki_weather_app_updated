@@ -2,12 +2,17 @@
 import { useSetRecoilState, useRecoilState } from "recoil";
 import { textState } from '../atom/globalState'
 import { useState } from "react";
+import { Loading } from "../atom/loading";
+
 
 
 export function InputBox() {
   const [input, setInput] = useState("")
 
+  
+
   const [_, setText] = useRecoilState(textState);
+  const setLoading = useSetRecoilState(Loading);
 
   const handleChange = (event: any) => {
     setInput(event.target.value);
@@ -20,6 +25,7 @@ export function InputBox() {
   const handleClick = (event: any) => {
     if (event.key == "Enter") {
       handleSubmit()
+      setLoading(true)
     }
   }
 

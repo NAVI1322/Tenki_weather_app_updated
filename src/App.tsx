@@ -7,6 +7,7 @@ import { GridItems } from "./components/gridItems";
 import { CurrentCard } from "./components/CurrentCard";
 
 import {
+  useRecoilState,
   useRecoilValue,
   useSetRecoilState,
 } from "recoil";
@@ -28,8 +29,13 @@ import {
 } from "./services/weatherData"
 
 import { Appbar } from "./components/AppBar";
+import { Loading } from "./atom/loading";
+
 
 function useWeatherData() {
+
+
+  const [_,setLocation] = useRecoilState(Loading)
   const inputBoxValue = useRecoilValue(textState);
   const setCurrentData = useSetRecoilState(currentState);
   const setHourlyData = useSetRecoilState(hourlyState);
@@ -38,17 +44,26 @@ function useWeatherData() {
   useEffect(() => {
     currentWeather(inputBoxValue).then((data: any) => {
       setCurrentData(data);
+      setLocation(false)
+      
     });
     HourlyWeather(inputBoxValue).then((data: any) => {
+      setLocation(true)
       setHourlyData(data);
+      setLocation(false)
     });
     forecastWeather(inputBoxValue).then((data: any) => {
+      setLocation(true)
       setForecastData(data);
+      setLocation(false)
     });
   }, [inputBoxValue, setCurrentData, setHourlyData, setForecastData]);
 }
 
 function App() {
+  
+
+
 
   useWeatherData()
 
