@@ -18,7 +18,7 @@ function App() {
    <div className=" md:flex flex-row md:space-x-10  ">
         <DashBoard />
 
-       <div className="flex flex-col justify-center items-center ">
+       <div className="flex flex-col justify-center space-y-10 items-center ">
           <Appbar />
           <CurrentCard />
           <GridItems />

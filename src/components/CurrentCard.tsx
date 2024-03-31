@@ -38,7 +38,7 @@ export function CurrentCard() {
   }
 
   return (
-    <div className="flex flex-col m-8 text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg w-[95%]  md:h-[320px] justify-center">
+    <div className="flex flex-col  text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg md:w-[95%] w-[80%]  md:h-[320px] justify-center">
       {loading ? ( // Render skeleton loader while loading
         <>
           <div className='flex space-x-2 justify-center items-center'>
