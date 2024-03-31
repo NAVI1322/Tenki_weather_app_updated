@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export function InputBox() {
   const [input, setInput] = useState("")
-  const [text, setText] = useRecoilState(textState);
+  const [_, setText] = useRecoilState(textState);
 
   const handleChange = (event: any) => {
     setInput(event.target.value);
