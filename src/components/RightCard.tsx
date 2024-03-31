@@ -36,14 +36,12 @@ export function RightCard(
   }
 
   return (
-    <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 md:mt-0  mt-14 md:border-l h-screen ">
-      <div className="flex justify-between text-xl   md:px-3" >This Week</div>
+    <div className="flex border-l-1 flex-col max-w-md items-center  pl-10 md:mt-0  mt-14 md:border-l h-screen ">
+      <div className="flex justify-between text-xl my-12 md:px-3" >This Week</div>
+      <div className="flex justify-start text-lg w-full font-medium">Today</div>
+      <div className="no-scrollbar overflow-x-auto flex flex-row gap-2 md:max-w-md max-md-sm bg-white mt-5 " >
 
-      <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 md:max-w-md max-md-sm bg-white mt-5 " >
-        <div
-
-          className="flex flex-col items-center justify-between p-4 rounded-xl hover:bg-secondaryBlue cursor-pointer"
-        >
+        <div className="flex flex-col items-center text-lg justify-between p-2 rounded-xl w-28 hover:bg-secondaryBlue cursor-pointer">
           <div className="text-lg text-center mb-2 pr-6 pl-6">
             {formatAMPM(new Date(currentData?.dt * 1000)) ? "Now" : ""}
           </div>
@@ -60,7 +58,7 @@ export function RightCard(
             {hourlyData.list.map((hour: any, index: number) => (
               <div
                 key={index}
-                className="flex flex-col items-center justify-between p-4 rounded-xl hover:bg-secondaryBlue cursor-pointer"
+                className="flex flex-col items-center justify-between p-2 rounded-xl w-28 hover:bg-secondaryBlue cursor-pointer"
               >
                 <div className="text-lg text-center mb-2 pr-6 pl-6">
                   {formatAMPM(new Date(hour.dt * 1000))}
@@ -87,7 +85,7 @@ export function RightCard(
                   key={index}
                   className="flex justify-between border-0 font-medium m-1"
                 >
-                  <div className="flex items-center min-w-20">
+                  <div className="flex text-lg items-center min-w-24">
                     {currentDay == new Date(day.dt * 1000).getDay()
                       ? "Today"
                       : dayNames[new Date(day.dt * 1000).getDay()]}
@@ -106,6 +104,6 @@ export function RightCard(
         </div>
 
       </div>
-    </div>
+    </div >
   );
 }
