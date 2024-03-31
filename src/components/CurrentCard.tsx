@@ -38,7 +38,7 @@ export function CurrentCard() {
   }
 
   return (
-    <div className="flex flex-col m-8 text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg  md:w-[610px]  md:h-[320px] justify-center">
+    <div className="flex flex-col m-8 text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg w-full h-[280px] md:w-[610px] md:h-[320px]">
       {loading ? ( // Render skeleton loader while loading
         <>
           <div className='flex space-x-2 justify-center items-center'>
@@ -51,7 +51,7 @@ export function CurrentCard() {
         </> 
       ) : (
         <>
-          <div className="flex flex-row text-md justify-between">
+          <div className="flex flex-row text-md justify-between ">
             <div className="flex items-center">
               <FaLocationDot />  {currentData?.name}, {currentData?.sys.country}
             </div>
