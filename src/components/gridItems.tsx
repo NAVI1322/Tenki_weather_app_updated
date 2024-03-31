@@ -11,29 +11,23 @@ export const GridItems = ({ climateData }: { climateData: ClimateData | null }) 
 
   const loading = useRecoilValue(Loading);
   return (
-    <div className="flex  justify-center">
+    <div className="flex justify-center">
 
-      <div className="grid grid-cols-2 col-span-2 md:w-[610px] gap-5 ">
-        {loading
-          ? <div className="mb-6 mt-3 bg-blue-100 md:w-[300px] rounded-lg flex items-center justify-center  "><LoadingElement /></div>
-          :
+      <div className="grid grid-cols-2 col-span-2  gap-5 w-full ">
+       
           <div className=" rounded-xl bg-blue-50 flex flex-col p-6 gap-4">
             <div className=" font-medium text-[18px]">{"Wind"}</div>
             <div className=" font-medium text-slate-400">{"Today wind speed"}</div>
             <div>{Math.round(climateData ? climateData?.list[0].speed * 3.6 : 0)} km/h</div>
           </div>
-        }
-        {loading
-          ? <div className="mb-6 mt-3 bg-blue-100  rounded-lg flex items-center justify-center"><LoadingElement /></div>
-          : <div className=" rounded-xl bg-blue-50  flex flex-col p-6 gap-4 ">
+        
+        <div className=" rounded-xl bg-blue-50  flex flex-col p-6 gap-4 ">
             <div className=" font-medium text-[18px]">{"Humidity"}</div>
             <div className=" font-medium text-slate-400">{"Today humidity"}</div>
             <div>{climateData?.list[0].humidity}%</div>
           </div>
-        }
-        {loading
-          ? <div className="  bg-blue-100  rounded-lg flex items-center justify-center "><LoadingElement /></div>
-          : <div className=" rounded-xl bg-blue-50  flex flex-col p-6 gap-4">
+        
+        {<div className=" rounded-xl bg-blue-50  flex flex-col p-6 gap-4">
             <div className=" font-medium text-[18px]">{"Pressure"}</div>
             <div className=" font-medium text-slate-400">{"Today Pressure"}</div>
             <div>{(climateData?.list[0].pressure)}mBar</div>

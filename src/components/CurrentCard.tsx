@@ -3,12 +3,11 @@ import { WeatherData } from "../services/weatherData";
 import { FaLocationDot, FaWater, FaWind } from "react-icons/fa6";
 import { BsDroplet } from "react-icons/bs";
 import Skeleton from "react-loading-skeleton";
-import {  Loading } from "../atom/loading";
-import { useRecoilValue } from "recoil";
+
 
 export function CurrentCard({ currentData }: { currentData: WeatherData | null }) {
 
-  const loading = useRecoilValue(Loading);
+
 
   function hourAMPM(dt: number) {
     const date = new Date(dt * 1000);
@@ -27,21 +26,10 @@ export function CurrentCard({ currentData }: { currentData: WeatherData | null }
   }
 
   return (
-    <div className="flex flex-col  text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg justify-center m-2 md:0">
-      {loading ? ( // Render skeleton loader while loading
-        <>
-          <div className='flex space-x-2 justify-center items-center'>
-            <span className='sr-only'>Loading...</span>
-            <div className='md:h-10 md:w-10 w-3 h-3 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
-            <div className='md:h-10 md:w-10 w-3 h-3 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
-            <div className='md:h-10 md:w-10 w-3 h-3 bg-slate-300 rounded-full animate-bounce'></div>
-          </div>
-
-        </>
-      ) : (
-        <>
+    <div className="flex flex-col  text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg justify-center  md:0">
+        
           <div className="flex flex-row text-md justify-between ">
-            <div className="flex items-center">
+            <div className="flex items-center ">
               <FaLocationDot />  {currentData?.name}, {currentData?.sys.country}
             </div>
             <div className="flex">Today {hourAMPM(currentData ? currentData?.dt : 0)}</div>
@@ -66,8 +54,8 @@ export function CurrentCard({ currentData }: { currentData: WeatherData | null }
               </div>
             </div>
           </div>
-        </>
-      )}
+        
+      
     </div>
   );
 }

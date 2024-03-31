@@ -30,6 +30,8 @@ import {
 
 import { Appbar } from "./components/AppBar";
 import { Loading } from "./atom/loading";
+import { LoadingElement } from "./components/Loading";
+
 
 
 function useWeatherData() {
@@ -40,6 +42,7 @@ function useWeatherData() {
   const setCurrentData = useSetRecoilState(currentState);
   const setHourlyData = useSetRecoilState(hourlyState);
   const setForecastData = useSetRecoilState(climateState);
+ 
 
   useEffect(() => {
     currentWeather(inputBoxValue).then((data: any) => {
@@ -63,24 +66,36 @@ function useWeatherData() {
 function App() {
 
   useWeatherData()
-
+  const loading = useRecoilValue(Loading);
   const currentData = useRecoilValue<WeatherData | null>(currentState)
   const hourlyData = useRecoilValue<HourlyData | null>(hourlyState)
   const climateData = useRecoilValue<ClimateData | null>(climateState)
 
   return (
-    <div className="flex md:flex-row md:space-x-20 flex-col justify-center">
-      <DashBoard />
-    
-        <div className="flex flex-col justify-center space-y-10">
+    <div className="flex md:flex-row flex-col md:space-x-20 justify-between ">
+    <DashBoard /> 
+    {loading ? ( // Render skeleton loader while loading
+        <>
+          <div className='flex space-x-2 justify-center items-center h-screen '>
+            <span className='sr-only'>Loading...</span>
+            <div className='md:h-10 md:w-10 w-3 h-3 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+            <div className='md:h-10 md:w-10 w-3 h-3 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+            <div className='md:h-10 md:w-10 w-3 h-3 bg-slate-300 rounded-full animate-bounce'></div>
+          </div>
+
+        </>
+      ) : <div className="flex flex-col justify-center space-y-10 flex-grow ">
           <Appbar />
           <CurrentCard currentData={currentData} />
           <GridItems climateData={climateData} />
         </div>
-        <div className="flex justify-center">
-          <RightCard hourlyData={hourlyData} climateData={climateData} currentData={currentData} />
-        </div>
-     
+      } {loading
+        ? <LoadingElement />
+      : <div className="flex justify-center ">
+      <RightCard hourlyData={hourlyData} climateData={climateData} currentData={currentData} />
+    </div>
+ }
+       
     </div>
   );
 } 
