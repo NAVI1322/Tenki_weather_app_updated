@@ -1,8 +1,7 @@
-import { useRecoilValue } from "recoil";
-import { Loading } from "../atom/loading";
+
 import { HourlyData, WeatherData, fetchIcon } from "../services/weatherData"
 import { ClimateData } from "../services/weatherData";
-import { LoadingElement } from "./Loading";
+
 
 
 export function RightCard(
@@ -13,7 +12,7 @@ export function RightCard(
   }
 ) {
 
-  const loading = useRecoilValue(Loading)
+
 
   const dayNames = [
     "Sunday",
@@ -37,15 +36,13 @@ export function RightCard(
   }
 
   return (
-    <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 mt-10 md:border-l h-screen ">
-      <div className="flex justify-between text-xl max-w-sm p-6" >This Week</div>
-      {loading
-        ? <div className="mb-6 mt-6 shadow-sm  md:w-[400px] md:h-[160px] w-[200px] h-[100px] rounded-lg flex items-center justify-center"><LoadingElement /></div>
-        :
+    <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 md:mt-1  mt-14 md:border-l h-screen ">
+      <div className="flex justify-between text-xl max-w-sm px-3" >This Week</div>
+      
         <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 max-w-md bg-white mt-5 " >
           <div
 
-            className="flex flex-col items-center justify-between p-2 rounded-xl hover:bg-secondaryBlue cursor-pointer"
+            className="flex flex-col items-center justify-between p-4 rounded-xl hover:bg-secondaryBlue cursor-pointer"
           >
             <div className="text-lg text-center mb-2 pr-6 pl-6">
               {formatAMPM(new Date(currentData?.dt * 1000)) ? "Now" : ""}
@@ -63,7 +60,7 @@ export function RightCard(
               {hourlyData.list.map((hour: any, index: number) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center justify-between p-2 rounded-xl hover:bg-secondaryBlue cursor-pointer"
+                  className="flex flex-col items-center justify-between p-4 rounded-xl hover:bg-secondaryBlue cursor-pointer"
                 >
                   <div className="text-lg text-center mb-2 pr-6 pl-6">
                     {formatAMPM(new Date(hour.dt * 1000))}
@@ -79,11 +76,9 @@ export function RightCard(
             </>
           )}
         </div>
-      }
+      
       <div className="text-neutral-800 flex flex-col  w-full mt-5">
-        {loading
-          ? <div className="mb-6 mt-6 shadow-sm  rounded-lg flex items-center justify-center"><LoadingElement /></div>
-          :
+        
           <div className="rounded-2xl">
             {climateData && (
               <div className="flex flex-col space-y-4 ">
@@ -109,7 +104,7 @@ export function RightCard(
               </div>
             )}
           </div>
-        }
+                  
       </div>
     </div>
   );
