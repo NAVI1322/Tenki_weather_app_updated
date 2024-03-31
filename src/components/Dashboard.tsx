@@ -2,13 +2,13 @@ import logo from "../imgs/logo/logo.jpeg";
 
 export function DashBoard() {
   return (
-    <div className=" md:flex md:flex-col text-neutral-800 md:h-screen max-w-[28%] hidden md:border-r-2 px-7 md:border-l py-6">
+    <div className=" md:flex md:flex-col text-neutral-800 md:h-screen hidden  border-r border-black/ w-full px-6  py-6 ">
       <div className="flex flex-row items-center justify-start gap-4 mb-20">
         <img src={logo} alt="" className="max-w-70 rounded-full" />
         <div className="text-3xl font-bold">Tenki</div>
       </div>
 
-      <div className="p-3 mt-10 hover:shadow-md hover:bg-blue-50 ease-in-out duration-300 rounded-lg cursor-pointer">
+      <div className="p-3 mt-10 hover:shadow-sm hover:bg-blue-50 ease-in-out duration-300 rounded-lg cursor-pointer">
         <div className="flex flex-row space-x-5 ">
           <div className="">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6  text-gray-400">
@@ -18,7 +18,7 @@ export function DashBoard() {
           <div className="text-neutral-400 text-lg font-medium">DashBoard</div>
         </div>
       </div>
-      <div className="p-3 mt-10 hover:shadow-xl rounded-md  hover:bg-blue-50 ease-in-out duration-300 cursor-pointer">
+      <div className="p-3 mt-10 hover:shadow-md rounded-md  hover:bg-blue-50 ease-in-out duration-300 cursor-pointer">
         <div className="flex flex-row space-x-5">
           <div className="">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 text-gray-400">
@@ -29,7 +29,7 @@ export function DashBoard() {
           <div className="text-neutral-400 text-lg font-medium">Team members</div>
         </div>
       </div>
-      <div className="p-3  mt-10 hover:shadow-xl rounded-md  hover:bg-blue-50 ease-in-out duration-300  cursor-pointer">
+      <div className="p-3  mt-10 hover:shadow-sm rounded-md  hover:bg-blue-50 ease-in-out duration-300  cursor-pointer">
         <div className="flex flex-row space-x-5">
           <div className="">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6  text-gray-400">

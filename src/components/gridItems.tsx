@@ -15,7 +15,7 @@ export const GridItems = ({ climateData }: { climateData: ClimateData | null }) 
 
       <div className="grid grid-cols-2 col-span-2 md:w-[610px] gap-5 ">
         {loading
-          ? <div className="mb-6 mt-3 bg-blue-100 md:w-[300px] md:h-[160px] rounded-lg flex items-center justify-center w-[250px] h-[120px] "><LoadingElement /></div>
+          ? <div className="mb-6 mt-3 bg-blue-100 md:w-[300px] rounded-lg flex items-center justify-center  "><LoadingElement /></div>
           :
           <div className=" rounded-xl bg-blue-50 flex flex-col p-6 gap-4">
             <div className=" font-medium text-[18px]">{"Wind"}</div>
@@ -24,7 +24,7 @@ export const GridItems = ({ climateData }: { climateData: ClimateData | null }) 
           </div>
         }
         {loading
-          ? <div className="mb-6 mt-3 bg-blue-100 md:w-[300px] md:h-[160px] w-[250px] h-[120px] rounded-lg flex items-center justify-center"><LoadingElement /></div>
+          ? <div className="mb-6 mt-3 bg-blue-100  rounded-lg flex items-center justify-center"><LoadingElement /></div>
           : <div className=" rounded-xl bg-blue-50  flex flex-col p-6 gap-4 ">
             <div className=" font-medium text-[18px]">{"Humidity"}</div>
             <div className=" font-medium text-slate-400">{"Today humidity"}</div>
@@ -32,7 +32,7 @@ export const GridItems = ({ climateData }: { climateData: ClimateData | null }) 
           </div>
         }
         {loading
-          ? <div className="  bg-blue-100 md:w-[300px] md:h-[160px] rounded-lg flex items-center justify-center w-[250px] h-[120px]"><LoadingElement /></div>
+          ? <div className="  bg-blue-100  rounded-lg flex items-center justify-center "><LoadingElement /></div>
           : <div className=" rounded-xl bg-blue-50  flex flex-col p-6 gap-4">
             <div className=" font-medium text-[18px]">{"Pressure"}</div>
             <div className=" font-medium text-slate-400">{"Today Pressure"}</div>
@@ -40,7 +40,7 @@ export const GridItems = ({ climateData }: { climateData: ClimateData | null }) 
           </div>
         }
         {loading
-          ? <div className="  bg-blue-100 md:w-[100%] md:h-[160px] rounded-lg flex items-center justify-center w-[100%] h-[120px]"><LoadingElement /></div>
+          ? <div className="  bg-blue-100  rounded-lg flex items-center justify-center"><LoadingElement /></div>
           :
           <div className=" rounded-xl bg-blue-50 flex flex-col p-6 ">
             <div className=" font-medium text-[18px] ">{"Today Temperatures"}</div>

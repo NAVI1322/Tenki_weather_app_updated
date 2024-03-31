@@ -61,9 +61,6 @@ function useWeatherData() {
 }
 
 function App() {
-  
-
-
 
   useWeatherData()
 
@@ -72,10 +69,10 @@ function App() {
   const climateData = useRecoilValue<ClimateData | null>(climateState)
 
   return (
-    <div className=" flex ">
+    <div className="flex md:flex-row md:space-x-20 flex-col justify-center">
       <DashBoard />
-      <div className="md:flex flex-col md:flex-row ">
-        <div className="flex flex-col justify-center items-center ">
+    
+        <div className="flex flex-col justify-center space-y-10">
           <Appbar />
           <CurrentCard currentData={currentData} />
           <GridItems climateData={climateData} />
@@ -83,9 +80,9 @@ function App() {
         <div className="flex justify-center">
           <RightCard hourlyData={hourlyData} climateData={climateData} currentData={currentData} />
         </div>
-      </div>
+     
     </div>
   );
-}
+} 
 
 export default App;

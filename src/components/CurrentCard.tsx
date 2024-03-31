@@ -27,7 +27,7 @@ export function CurrentCard({ currentData }: { currentData: WeatherData | null }
   }
 
   return (
-    <div className="flex flex-col  text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg md:w-[95%] w-[80%]  md:h-[320px] justify-center">
+    <div className="flex flex-col  text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg justify-center m-2 md:0">
       {loading ? ( // Render skeleton loader while loading
         <>
           <div className='flex space-x-2 justify-center items-center'>

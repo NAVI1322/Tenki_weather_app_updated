@@ -10,11 +10,12 @@ export function Appbar() {
 
 
   return (
-    <div className='flex flex-row items-center justify-start w-[470px] md:w-[38rem] mt-6' >
-      <div>
+    <div className='flex flex-row items-center md:justify-start justify-between  md:w-[38rem] px-5 mt-6 md:mt-2' >
+      <div className='flex items-center'>
         <FaSearch />
+        <InputBox />
       </div>
-      <InputBox />
+    
       <div className="md:hidden pr-6 cursor-pointer" onClick={() => Setmenu(!Menu)}>
         {!Menu
           ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
