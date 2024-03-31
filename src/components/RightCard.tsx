@@ -39,7 +39,7 @@ export function RightCard(
     <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 md:mt-0  mt-14 md:border-l h-screen ">
       <div className="flex justify-between text-xl   md:px-3" >This Week</div>
       
-        <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 md:max-w-md  bg-white mt-5 " >
+        <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 md:max-w-md max-md-sm bg-white mt-5 " >
           <div
 
             className="flex flex-col items-center justify-between p-4 rounded-xl hover:bg-secondaryBlue cursor-pointer"
