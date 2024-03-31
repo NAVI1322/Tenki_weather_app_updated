@@ -37,7 +37,7 @@ export function RightCard(
   }
 
   return (
-    <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 mt-16 md:border-l h-screen ">
+    <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 mt-10 md:border-l h-screen ">
       <div className="flex justify-between text-xl max-w-sm p-6" >This Week</div>
       {loading
         ? <div className="mb-6 mt-6 shadow-sm  md:w-[400px] md:h-[160px] w-[200px] h-[100px] rounded-lg flex items-center justify-center"><LoadingElement /></div>
@@ -45,7 +45,7 @@ export function RightCard(
         <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 max-w-md bg-white mt-5 " >
           <div
 
-            className="flex flex-col items-center justify-between p-4 rounded-xl hover:bg-secondaryBlue cursor-pointer"
+            className="flex flex-col items-center justify-between p-2 rounded-xl hover:bg-secondaryBlue cursor-pointer"
           >
             <div className="text-lg text-center mb-2 pr-6 pl-6">
               {formatAMPM(new Date(currentData?.dt * 1000)) ? "Now" : ""}
@@ -63,7 +63,7 @@ export function RightCard(
               {hourlyData.list.map((hour: any, index: number) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center justify-between p-4 rounded-xl hover:bg-secondaryBlue cursor-pointer"
+                  className="flex flex-col items-center justify-between p-2 rounded-xl hover:bg-secondaryBlue cursor-pointer"
                 >
                   <div className="text-lg text-center mb-2 pr-6 pl-6">
                     {formatAMPM(new Date(hour.dt * 1000))}
