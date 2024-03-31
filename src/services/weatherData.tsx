@@ -86,33 +86,9 @@ const getCoords = () => {
     }
   })
 }
-const getNavigations = () => {
-
-  return new Promise<{ latitude: number; longitude: number }>((resolve, reject) => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-
-
-          resolve({ latitude, longitude });
-        },
-        function(error) {
-          console.error("Error getting location:", error.message);
-          reject(error);
-        }
-      );
-    } else {
-      reject(new Error("Geolocation not supported"));
-    }
-  });
-};
-
-
 
 async function getLocation() {
-  const { longitude, latitude }: any = await getNavigations();
+  const { longitude, latitude }: any = await getCoords();
   try {
 
     const response = await axios.get(
@@ -127,8 +103,6 @@ async function getLocation() {
 
 export const currentWeather = async (location: string) => {
   try {
-    const { latitude, longitude } = await getCoords()
-    console.log(latitude, longitude, "current")
     const GetCityName = await getLocation()
     const CityName = location ? location : GetCityName;
 
