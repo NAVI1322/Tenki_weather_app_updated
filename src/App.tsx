@@ -72,31 +72,31 @@ function App() {
   const climateData = useRecoilValue<ClimateData | null>(climateState)
 
   return (
-    <div className="flex md:flex-row flex-col md:space-x-20 justify-between ">
+    <div className="flex flex-col md:flex-row md:space-x-20 h-screen">
     <DashBoard /> 
-    {loading ? ( // Render skeleton loader while loading
-        <>
-          <div className='flex space-x-2 justify-center items-center h-screen '>
+    {loading ? (
+        // Render skeleton loader while loading
+        <div className='flex justify-center items-center flex-grow'>
             <span className='sr-only'>Loading...</span>
-            <div className='md:h-10 md:w-10 w-3 h-3 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
-            <div className='md:h-10 md:w-10 w-3 h-3 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
-            <div className='md:h-10 md:w-10 w-3 h-3 bg-slate-300 rounded-full animate-bounce'></div>
-          </div>
-
-        </>
-      ) : <div className="flex flex-col justify-center space-y-10 flex-grow ">
-          <Appbar />
-          <CurrentCard currentData={currentData} />
-          <GridItems climateData={climateData} />
+            <div className='h-8 w-8 md:h-3 md:w-3 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
+            <div className='h-8 w-8 md:h-3 md:w-3 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
+            <div className='h-8 w-8 md:h-3 md:w-3 bg-slate-300 rounded-full animate-bounce'></div>
         </div>
-      } {loading
-        ? <LoadingElement />
-      : <div className="flex justify-center ">
-      <RightCard hourlyData={hourlyData} climateData={climateData} currentData={currentData} />
-    </div>
- }
-       
-    </div>
+    ) : (
+        <div className="flex flex-col justify-center md:flex-row md:justify-between flex-grow">
+            <div className="flex flex-col justify-center space-y-10 md:w-1/2">
+                <Appbar />
+                <CurrentCard currentData={currentData} />
+                <GridItems climateData={climateData} />
+            </div>
+            <div className="flex justify-center md:w-1/2">
+                <RightCard hourlyData={hourlyData} climateData={climateData} currentData={currentData} />
+            </div>
+        </div>
+    )}
+</div>
+
+
   );
 } 
 
