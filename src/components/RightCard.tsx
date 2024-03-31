@@ -87,7 +87,7 @@ export function RightCard(
                     key={index}
                     className="flex justify-between border-0 font-medium m-1"
                   >
-                    <div className="flex min-w-32 items-center p-4">
+                    <div className="flex space-x-5 items-center p-4">
                       {currentDay == new Date(day.dt * 1000).getDay()
                         ? "Today"
                         : dayNames[new Date(day.dt * 1000).getDay()]}
