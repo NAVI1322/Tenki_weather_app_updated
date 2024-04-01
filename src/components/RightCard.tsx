@@ -36,8 +36,8 @@ export function RightCard(
   }
 
   return (
-    <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 md:mt-0 m-4 mt-14  md:border-l h-screen ">
-      <div className="flex justify-between text-xl   md:px-3" >This Week</div>
+    <div className="flex border-l-1 flex-col  items-center  pl-5 md:mt-0 m-4 mt-14  md:border-l h-screen ">
+      <div className="text-xl  text-center d:px-3 mt-8" >This Week</div>
       
         <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 md:max-w-md w-[100%] bg-white mt-5 " >
           <div
