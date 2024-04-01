@@ -36,11 +36,11 @@ export function RightCard(
   }
 
   return (
-    <div className="flex border-l-1 flex-col  space-y-6 items-center  pl-5 md:mt-0 m-4 mt-14  md:border-l h-screen ">
+    <div className="flex border-l-1 flex-col  space-y-6 items-center  pl-5 md:mt-0  mt-14  md:border-l h-screen ">
       <div className="text-xl  text-center d:px-3 mt-8" >Today</div>
       
       <div className="w-[100%] mt-5 h-full">
-      <div className="no-scrollbar  overflow-x-auto flex flex-row gap-4 md:max-w-md w-[100%] bg-white mt-5 h-full" >
+      <div className="no-scrollbar  overflow-x-auto flex flex-row gap-2  md:max-w-md w-[100%] bg-white mt-5 h-full" >
           <div
 
             className="flex flex-col items-center justify-between p-4 space-y-2  rounded-xl hover:bg-secondaryBlue cursor-pointer"
