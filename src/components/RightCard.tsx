@@ -36,13 +36,13 @@ export function RightCard(
   }
 
   return (
-    <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 md:mt-0  mt-14 md:border-l h-screen ">
+    <div className="flex border-l-1 flex-col max-w-md items-center  pl-5 md:mt-0  mt-14  md:border-l h-screen ">
       <div className="flex justify-between text-xl   md:px-3" >This Week</div>
       
         <div className="no-scrollbar overflow-x-auto flex flex-row gap-4 md:max-w-md w-[90%] bg-white mt-5 " >
           <div
 
-            className="flex flex-col items-center justify-between p-4 rounded-xl hover:bg-secondaryBlue cursor-pointer"
+            className="flex flex-col items-center justify-between p-4 space-y-2 rounded-xl hover:bg-secondaryBlue cursor-pointer"
           >
             <div className="text-lg text-center mb-2 pr-6 pl-6">
               {formatAMPM(new Date(currentData?.dt * 1000)) ? "Now" : ""}

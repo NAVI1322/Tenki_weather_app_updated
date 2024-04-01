@@ -89,7 +89,7 @@ function App() {
                 <CurrentCard currentData={currentData} />
                 <GridItems climateData={climateData} />
             </div>
-            <div className="flex justify-center md:w-1/2">
+            <div className="">
                 <RightCard hourlyData={hourlyData} climateData={climateData} currentData={currentData} />
             </div>
         </div>
