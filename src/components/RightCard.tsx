@@ -78,7 +78,7 @@ export function RightCard(
         </div>
       
       <div className="text-neutral-800 flex flex-col w-full">
-      <div className="text-xl  text-center d:px-3 mt-8" >Today</div>
+      <div className="text-xl  text-center d:px-3 mt-8" >This Week</div>
           <div className="rounded-2xl  mt-5 
           "   >
             {climateData && (
