@@ -8,7 +8,6 @@ import Skeleton from "react-loading-skeleton";
 export function CurrentCard({ currentData }: { currentData: WeatherData | null }) {
 
 
-
   function hourAMPM(dt: number) {
     const date = new Date(dt * 1000);
 
@@ -26,8 +25,8 @@ export function CurrentCard({ currentData }: { currentData: WeatherData | null }
   }
 
   return (
-    <div className="flex flex-col  text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg justify-center  md:0">
-        
+    <div className="flex flex-col  text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg justify-center w-full md:0">
+        <>
           <div className="flex flex-row text-md justify-between ">
             <div className="flex items-center ">
               <FaLocationDot />  {currentData?.name}, {currentData?.sys.country}
@@ -54,7 +53,7 @@ export function CurrentCard({ currentData }: { currentData: WeatherData | null }
               </div>
             </div>
           </div>
-        
+        </>
       
     </div>
   );

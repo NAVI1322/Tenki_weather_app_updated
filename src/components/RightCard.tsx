@@ -79,13 +79,14 @@ export function RightCard(
       
       <div className="text-neutral-800 flex flex-col w-full">
         
-          <div className="rounded-2xl justify-between mt-5" >
+          <div className="rounded-2xl  mt-5 
+          "   >
             {climateData && (
-              <div className="flex flex-col space-y-4 ">
+              <div className="flex flex-col ">
                 {climateData.list.map((day: any, index: number) => (
                   <div
                     key={index}
-                    className="flex justify-between border-0 font-medium m-1"
+                    className="flex justify-between  font-medium m-1"
                   >
                     <div className="flex items-center">
                       {currentDay == new Date(day.dt * 1000).getDay()
