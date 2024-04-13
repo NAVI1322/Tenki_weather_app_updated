@@ -28,10 +28,10 @@ export function CurrentCard({ currentData }: { currentData: WeatherData | null }
     <div className="flex flex-col  text-primaryBlue  bg-secondaryBlue rounded-xl p-4 shadow-lg justify-center w-full md:0">
         <>
           <div className="flex flex-row text-md justify-between ">
-            <div className="flex items-center ">
+            <div className="flex items-center font-thin">
               <FaLocationDot />  {currentData?.name}, {currentData?.sys.country}
             </div>
-            <div className="flex">Today {hourAMPM(currentData ? currentData?.dt : 0)}</div>
+            <div className="flex font-thin">Today {hourAMPM(currentData ? currentData?.dt : 0)}</div>
           </div>
           <div className="flex flex-col text-center p-3 items-between mt-10 ">
             <div className=" text-7xl mb-4">
@@ -42,13 +42,13 @@ export function CurrentCard({ currentData }: { currentData: WeatherData | null }
             </div>
 
             <div className="flex mt-5 justify-between space-x-10">
-              <div className="flex flex-row text-center gap-1 items-center justify-center">
+              <div className="flex flex-row text-center gap-1 items-center justify-center font-thin">
                 <FaWater /> {currentData ? currentData.main.pressure + " hPa" : ""}
               </div>
-              <div className="flex flex-row text-center gap-1 items-center justify-center">
+              <div className="flex flex-row text-center gap-1 items-center justify-center font-thin">
                 <BsDroplet /> {currentData ? currentData.main.humidity + " %" : ""}
               </div>
-              <div className="flex flex-row text-center gap-1 items-center justify-center ">
+              <div className="flex flex-row text-center gap-1 items-center justify-center font-thin">
                 <FaWind /> {currentData ? Math.round(currentData.wind.speed * 3.6) + " km/h" : ""}
               </div>
             </div>
