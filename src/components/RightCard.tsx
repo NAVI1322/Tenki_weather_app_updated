@@ -36,14 +36,14 @@ export function RightCard(
   }
 
   return (
-    <div className="flex border-l-1 flex-col  space-y-6 items-center  pl-5 md:mt-0  mt-14  md:border-l h-screen ">
+    <div className="flex border-l-1 flex-col items-center  pl-1   md:mt-0  mt-14  md:border-l w-full">
       <div className="text-xl  text-center d:px-3 mt-5" >Today</div>
       
-      <div className=" mt-5 h-full md:max-w-md">
-      <div className="no-scrollbar p-2 overflow-x-auto flex flex-row gap-2 space-x-3  bg-white mt-5 h-full " >
+      <div className=" mt-5  md:max-w-md">
+      <div className="no-scrollbar  overflow-x-auto flex flex-row p-1  gap-8 bg-white mt-5 h-full max-w-md" >
           <div
 
-            className="flex  flex-col items-center justify-between p-4 space-y-2 shadow-md  rounded-xl hover:bg-secondaryBlue cursor-pointer"
+            className="flex  flex-col items-center justify-between p-4 space-y-2 shadow-md rounded-xl hover:bg-secondaryBlue cursor-pointer"
           >
             <div className="text-lg text-center mb-2 pr-6 pl-6">
               {formatAMPM(new Date(currentData?.dt * 1000)) ? "Now" : ""}
@@ -61,7 +61,7 @@ export function RightCard(
               {hourlyData.list.map((hour: any, index: number) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center justify-between  p-4 shadow-lg rounded-xl hover:bg-secondaryBlue cursor-pointer "
+                  className="flex flex-col items-center justify-between  p-4 shadow-sm rounded-xl hover:bg-secondaryBlue cursor-pointer "
                 >
                   <div className="text-lg text-center mb-2 pr-6 pl-6 ">
                     {formatAMPM(new Date(hour.dt * 1000))}
@@ -79,23 +79,23 @@ export function RightCard(
         </div>
       
       </div>
-      <div className="text-neutral-800 flex flex-col w-full ">
-      <div className="text-xl  text-center d:px-3 mt-8" >This Week</div>
+      <div className="text-neutral-800 flex flex-col w-[90%] mt-5 ">
+      <div className="text-xl  text-center mt-10" >This Week</div>
           <div className="rounded-2xl  mt-5 
           "   >
             {climateData && (
-              <div className="flex flex-col">
+              <div className="flex flex-col space-y-2">
                 {climateData.list.map((day: any, index: number) => (
                   <div
                     key={index}
-                    className="flex justify-between  font-medium m-1 "
+                    className="flex justify-between "
                   >
                     <div className="flex items-center font-medium">
                       {currentDay == new Date(day.dt * 1000).getDay()
                         ? "Today"
                         : dayNames[new Date(day.dt * 1000).getDay()]}
                     </div>
-                    <div className="flex justify-center items-center text-sm font-thin ">
+                    <div className="flex items-center text-sm font-thin ">
                       <div>{Math.round(day.temp.max)}° </div>{" "}
                       <div className="text-gray-400">
                         /{Math.round(day.temp.min)}°C
