@@ -3,7 +3,11 @@ import axios from "axios";
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
-export interface WeatherData {
+interface WeatherErrorResponse {
+  message: string;
+}
+
+export interface WeatherData extends Partial<WeatherErrorResponse> {
   name: string;
   main: {
     temp: number;
@@ -31,7 +35,7 @@ export interface WeatherData {
   dt: number;
 }
 
-export interface ClimateData {
+export interface ClimateData extends Partial<WeatherErrorResponse> {
   city: {
     name: string;
     country: string;
@@ -109,24 +113,28 @@ async function getLocation() {
 
 export const fetchWeatherData = async (city: string): Promise<WeatherData> => {
   try {
-    const response = await axios.get(
+    const response = await axios.get<WeatherData>(
       `${BASE_URL}weather?q=${city}&units=metric&appid=${API_KEY}`
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching weather data:", error);
+    if (axios.isAxiosError(error) && error.response?.data) {
+      throw error.response.data;
+    }
     throw error;
   }
 };
 
 export const fetchForecastData = async (city: string): Promise<ClimateData> => {
   try {
-    const response = await axios.get(
+    const response = await axios.get<ClimateData>(
       `${BASE_URL}forecast?q=${city}&units=metric&appid=${API_KEY}`
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching forecast data:", error);
+    if (axios.isAxiosError(error) && error.response?.data) {
+      throw error.response.data;
+    }
     throw error;
   }
 };

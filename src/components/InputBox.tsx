@@ -12,12 +12,12 @@ export function InputBox({ setWeatherData, setForecastData, setLoading }: InputB
   const [city, setCity] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const fetchWeatherByCoords = async (latitude: number, longitude: number) => {
+  const fetchWeatherByCoords = async (latitude: number, longitude: number): Promise<void> => {
     try {
       // Fetch current weather by coordinates
       const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${import.meta.env.VITE_WEATHER_API_KEY}`;
       const weatherResponse = await fetch(weatherUrl);
-      const weatherData = await weatherResponse.json();
+      const weatherData: WeatherData = await weatherResponse.json();
       
       if (weatherResponse.ok) {
         setWeatherData(weatherData);
@@ -26,7 +26,7 @@ export function InputBox({ setWeatherData, setForecastData, setLoading }: InputB
         // Fetch forecast by coordinates
         const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${import.meta.env.VITE_WEATHER_API_KEY}`;
         const forecastResponse = await fetch(forecastUrl);
-        const forecastData = await forecastResponse.json();
+        const forecastData: ClimateData = await forecastResponse.json();
         
         if (forecastResponse.ok) {
           setForecastData(forecastData);
@@ -84,7 +84,7 @@ export function InputBox({ setWeatherData, setForecastData, setLoading }: InputB
       // Fetch current weather
       const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_WEATHER_API_KEY}`;
       const weatherResponse = await fetch(weatherUrl);
-      const weatherData = await weatherResponse.json();
+      const weatherData: WeatherData = await weatherResponse.json();
       
       if (weatherResponse.ok) {
         setWeatherData(weatherData);
@@ -92,7 +92,7 @@ export function InputBox({ setWeatherData, setForecastData, setLoading }: InputB
         // If current weather is successful, fetch forecast
         const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${import.meta.env.VITE_WEATHER_API_KEY}`;
         const forecastResponse = await fetch(forecastUrl);
-        const forecastData = await forecastResponse.json();
+        const forecastData: ClimateData = await forecastResponse.json();
         
         if (forecastResponse.ok) {
           setForecastData(forecastData);

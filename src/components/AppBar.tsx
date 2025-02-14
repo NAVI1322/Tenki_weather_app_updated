@@ -1,11 +1,17 @@
 import { InputBox } from "./InputBox";
-import { WeatherData, ClimateData } from "../services/weatherData";
 import { useState } from "react";
 import logo from "../imgs/logo/logo.jpeg";
 import { useNavigate } from 'react-router-dom';
+import { WeatherData, ClimateData } from "../services/weatherData";
 
-export function AppBar() {
+interface AppBarProps {
+  onWeatherUpdate?: (data: WeatherData | null) => void;
+  onForecastUpdate?: (data: ClimateData | null) => void;
+}
+
+export function AppBar({ onWeatherUpdate, onForecastUpdate }: AppBarProps = {}) {
   const [menu, setMenu] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -13,16 +19,15 @@ export function AppBar() {
       <div className="flex-1">
         <InputBox
           setWeatherData={(data) => {
-            // Handle weather data updates in parent component if needed
-            console.log("Weather data updated:", data);
+            setIsLoading(false);
+            onWeatherUpdate?.(data);
           }}
           setForecastData={(data) => {
-            // Handle forecast data updates in parent component if needed
-            console.log("Forecast data updated:", data);
+            setIsLoading(false);
+            onForecastUpdate?.(data);
           }}
-          setLoading={(isLoading) => {
-            // Handle loading state updates in parent component if needed
-            console.log("Loading state updated:", isLoading);
+          setLoading={(loading) => {
+            setIsLoading(loading);
           }}
         />
       </div>
@@ -33,7 +38,13 @@ export function AppBar() {
         </svg>
       </div>
 
-      <div className={!menu ? 'fixed left-0 top-0  w-[100%] cursor-pointer bg-blue-50 h-screen border-y border-4 font-mono ease-in-out duration-700' : 'fixed left-[-100%] top-0  w-[60%]  border-r bg-blue-50 border-r-slate-400 h-full ease-in-out duration-700 font-mono'}>
+      <div 
+        className={
+          !menu 
+            ? 'fixed left-0 top-0 w-[100%] cursor-pointer bg-blue-50 h-screen border-y border-4 font-mono ease-in-out duration-700' 
+            : 'fixed left-[-100%] top-0 w-[60%] border-r bg-blue-50 border-r-slate-400 h-full ease-in-out duration-700 font-mono'
+        }
+      >
         <div className="flex justify-end p-6" onClick={() => setMenu(!menu)}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
