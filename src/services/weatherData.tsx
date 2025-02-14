@@ -1,58 +1,65 @@
 import axios from "axios";
 
-const API_KEY = import.meta.env.VITE_WEATHER_API;
-const BASE_URL = "https://pro.openweathermap.org/data/2.5/";
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
 export interface WeatherData {
-  weather: [
-    {
-      id: number;
-      main: string;
-      description: string;
-      icon: string;
-    }
-  ];
+  name: string;
   main: {
-    temp: number,
-    feels_like: number,
-    temp_min: number,
-    temp_max: number,
-    pressure: number,
-    humidity: number,
-
-  }
+    temp: number;
+    feels_like: number;
+    temp_min: number;
+    temp_max: number;
+    humidity: number;
+    pressure: number;
+  };
+  weather: {
+    description: string;
+    icon: string;
+    main: string;
+    id: number;
+  }[];
   wind: {
-    speed: number,
-  }
-  clouds: {
-    all: number;
+    speed: number;
+    deg: number;
   };
   sys: {
     country: string;
+    sunrise: number;
+    sunset: number;
   };
-  dt: number | any;
-  name: string;
+  dt: number;
 }
 
 export interface ClimateData {
+  city: {
+    name: string;
+    country: string;
+    sunrise: number;
+    sunset: number;
+  };
   list: {
     dt: number;
-    temp: {
-      min: number;
-      max: number;
-      day: number;
-      morn: number;
-      eve: number;
-      night: number;
+    main: {
+      temp: number;
+      feels_like: number;
+      temp_min: number;
+      temp_max: number;
+      humidity: number;
+      pressure: number;
     };
     weather: {
       description: string;
+      icon: string;
+      main: string;
+      id: number;
     }[];
-
-    speed: number;
-    deg: number;
-    pressure: number;
-    humidity: number;
+    wind: {
+      speed: number;
+      deg: number;
+    };
+    dt_txt: string;
+    pop: number; // probability of precipitation
   }[];
 }
 
@@ -100,19 +107,27 @@ async function getLocation() {
   }
 }
 
-
-export const currentWeather = async (location: string) => {
+export const fetchWeatherData = async (city: string): Promise<WeatherData> => {
   try {
-    const GetCityName = await getLocation()
-    const CityName = location ? location : GetCityName;
-
-    const res = await axios.get<WeatherData>(
-      BASE_URL + "weather?q=" + CityName + "&units=metric" + "&APPID=" + API_KEY
+    const response = await axios.get(
+      `${BASE_URL}weather?q=${city}&units=metric&appid=${API_KEY}`
     );
-    return res.data;
-  } catch (err) {
-    console.error("Error fetching data", err);
-    throw err;
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
+    throw error;
+  }
+};
+
+export const fetchForecastData = async (city: string): Promise<ClimateData> => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}forecast?q=${city}&units=metric&appid=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching forecast data:", error);
+    throw error;
   }
 };
 
@@ -128,25 +143,6 @@ export const HourlyWeather = async (location: string) => {
       "forecast/hourly?q=" +
       CityName +
       "&cnt=24&units=metric&APPID=" +
-      API_KEY
-    );
-    return res.data;
-  } catch (err) {
-    console.error("Error fetching data", err);
-  }
-};
-export const forecastWeather = async (location: string) => {
-  try {
-
-    const GetCityName = await getLocation()
-    const CityName = location ? location : GetCityName;
-
-    const res = await axios.get<ClimateData>(
-      BASE_URL +
-      "forecast/climate?q=" +
-      CityName +
-      "&cnt=7&&units=metric&" +
-      "&APPID=" +
       API_KEY
     );
     return res.data;

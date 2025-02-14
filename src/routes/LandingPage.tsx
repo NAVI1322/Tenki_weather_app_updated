@@ -1,109 +1,100 @@
-
-import { useEffect } from "react";
-import { RightCard } from "../components/RightCard";
-import { DashBoard } from "../components/Dashboard";
-import { GridItems } from "../components/gridItems";
+import { useState } from "react";
 import { CurrentCard } from "../components/CurrentCard";
-import logo from "../imgs/logo/logo.jpeg";
+import { InputBox } from "../components/InputBox";
+import { Loading } from "../components/Loading";
+import { WeatherData, ClimateData } from "../services/weatherData";
+import { RightCard } from "../components/RightCard";
+import { ForecastCard } from "../components/ForecastCard";
+import { WiDaySunny, WiCloud } from "react-icons/wi";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-import {
-  useRecoilState,
-  useRecoilValue,
-  useSetRecoilState,
-} from "recoil";
-
-import {
-  textState,
-  currentState,
-  hourlyState,
-  climateState
-} from "../atom/globalState";
-
-import {
-  currentWeather,
-  HourlyWeather,
-  forecastWeather,
-  WeatherData,
-  HourlyData,
-  ClimateData
-} from "../services/weatherData"
-
-import { Appbar } from "../components/AppBar";
-import { Loading } from "../atom/loading";
-
-
-
-
-function useWeatherData() {
-
-
-  const [_,setLocation] = useRecoilState(Loading)
-  const inputBoxValue = useRecoilValue(textState);
-  const setCurrentData = useSetRecoilState(currentState);
-  const setHourlyData = useSetRecoilState(hourlyState);
-  const setForecastData = useSetRecoilState(climateState);
- 
-
-  useEffect(() => {
-    currentWeather(inputBoxValue).then((data: any) => {
-      setCurrentData(data);
-      setLocation(false)
-      
-    });
-    HourlyWeather(inputBoxValue).then((data: any) => {
-      setLocation(true)
-      setHourlyData(data);
-      setLocation(false)
-    });
-    forecastWeather(inputBoxValue).then((data: any) => {
-      setLocation(true)
-      setForecastData(data);
-      setLocation(false)
-    });
-  }, [inputBoxValue, setCurrentData, setHourlyData, setForecastData]);
-}
-
-function LandingPage() {
-
-  useWeatherData()
-  const loading = useRecoilValue(Loading);
-  const currentData = useRecoilValue<WeatherData | null>(currentState)
-  const hourlyData = useRecoilValue<HourlyData | null>(hourlyState)
-  const climateData = useRecoilValue<ClimateData | null>(climateState)
+export default function LandingPage() {
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [forecastData, setForecastData] = useState<ClimateData | null>(null);
+  const [loading, setLoading] = useState(false);
 
   return (
-  <div className="flex flex-col md:flex-row lg:space-x-10 sm:space-x-10 h-screen ">
-  <div className="hidden lg:flex">
-  <DashBoard /> 
-  </div>
-    {loading ? (
-        // Render skeleton loader while loading
-        <div className='flex justify-center items-center space-x-1 flex-grow'>
-            <span className='sr-only '>Loading...</span>
-            <div className='h-8 w-8 md:h-16 md:w-16 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.3s]'></div>
-            <div className='h-8 w-8 md:h-16 md:w-16 bg-slate-300 rounded-full animate-bounce [animation-delay:-0.15s]'></div>
-            <div className='h-8 w-8 md:h-16 md:w-16 bg-slate-300 rounded-full animate-bounce'></div>
-        </div>
-    ) : (
-        <div className="flex flex-col justify-center sm:flex-row md:justify-between flex-grow ">
-            <div className="flex flex-col justify-center space-y-10 w-full mr-10 px-3">
-                <div className="md:hidden mt-5 ml-8 flex items-center space-x-2 " > 
-                  <img src={logo} alt="" className="max-w-70 rounded-full" />
-                  <div className="text-3xl font-bold">Tenki</div>
-                </div>
-                <Appbar />
-                <CurrentCard currentData={currentData} />
-                <GridItems climateData={climateData} />
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-grow flex flex-col gap-8 py-6">
+        <div className="text-center space-y-6 relative">
+          {/* Decorative background elements */}
+          <div className="absolute top-0 left-10 opacity-20 animate-float">
+            <WiCloud className="w-24 h-24 text-cartoon-blue" />
+          </div>
+          <div className="absolute top-10 right-10 opacity-20 animate-float-slow">
+            <WiCloud className="w-16 h-16 text-cartoon-purple" />
+          </div>
+          
+          {/* Title section */}
+          <div className="relative">
+            <div className="flex items-center justify-center gap-6">
+              <WiDaySunny className="w-20 h-20 text-cartoon-yellow animate-spin-slow drop-shadow-[0_0_15px_rgba(234,179,8,0.3)]" />
+              <h1 className="text-7xl font-display bg-gradient-to-r from-cartoon-orange via-cartoon-pink to-cartoon-purple text-transparent bg-clip-text drop-shadow-sm">
+                Tenki
+              </h1>
             </div>
-            <div className="flex" >
-                <RightCard hourlyData={hourlyData} climateData={climateData} currentData={currentData} />
-            </div>
+            <p className="text-2xl text-primary-600/70 font-display mt-4">
+              Your Daily Weather Companion ✨
+            </p>
+          </div>
+
+          {/* Search box */}
+          <div className="max-w-2xl mx-auto w-full px-4">
+            <InputBox 
+              setWeatherData={setWeatherData} 
+              setLoading={setLoading}
+              setForecastData={setForecastData}
+            />
+          </div>
         </div>
-    )}
-</div>
 
+        {loading ? (
+          <Loading />
+        ) : weatherData ? (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 px-4">
+            <div className="lg:col-span-7 space-y-8">
+              <CurrentCard currentData={weatherData} />
+              <RightCard weatherData={weatherData} />
+            </div>
+            <div className="lg:col-span-5">
+              <ForecastCard forecastData={forecastData} />
+            </div>
+          </div>
+        ) : (
+          <div className="text-center text-primary-400 font-display text-xl">
+            Enter a city name to see the weather magic! ✨
+          </div>
+        )}
+      </div>
 
+      {/* Footer */}
+      <footer className="mt-auto py-6 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col items-center gap-4">
+          <div className="text-xl font-display text-primary-600">
+            Developed by Navneet Sharma
+          </div>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/navi1322"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-600 transition-colors duration-300 flex items-center gap-2 group"
+            >
+              <FaGithub className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
+              <span className="font-display">GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/navneet7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-500 hover:text-primary-600 transition-colors duration-300 flex items-center gap-2 group"
+            >
+              <FaLinkedin className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
+              <span className="font-display">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
-} 
-
-export default LandingPage;
+}

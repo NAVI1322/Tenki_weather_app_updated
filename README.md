@@ -1,89 +1,121 @@
-# My Weather Application
+# Tenki - Weather Application 🌤️
 
-## Overview
-My Weather Application is a modern weather tracking app built with React and Recoil, utilizing the OpenWeather API for fetching real-time weather data. The application supports real-time tracking of the user's current location and allows searching for weather information in other cities.
+Tenki is a modern, user-friendly weather application that provides real-time weather information and forecasts. Built with React and TypeScript, it features a beautiful, responsive design with animated weather icons and detailed weather information.
 
-## Features
-- Real-time weather tracking for the user's current location
-- Search functionality for weather information in other cities
-- Responsive and user-friendly interface
-- State management with Recoil for efficient data handling
+![Tenki Weather App](./public/app-preview.png)
 
-## Tech Stack
-- React: JavaScript library for building user interfaces
-- tailwind : 
-- Recoil: State management library for React
-- OpenWeather API: Source of weather data
-- Axios: Promise-based HTTP client for making API requests
+## ✨ Features
 
-## Installation
+- **Real-time Weather Data**
+  - Current temperature and conditions
+  - "Feels like" temperature
+  - Humidity and pressure
+  - Wind speed and direction
+  - Sunrise and sunset times
+
+- **Weather Forecasts**
+  - 5-day weather forecast
+  - 24-hour hourly forecast
+  - Precipitation probability
+  - Temperature trends
+
+- **Location Features**
+  - Search for any city worldwide
+  - Get weather for current location
+  - Remember recent searches
+
+- **User Interface**
+  - Responsive design for all devices
+  - Animated weather icons
+  - Smooth transitions and hover effects
+  - Dark/light mode support
+  - Loading animations
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (version 14 or higher)
+- npm or yarn
+- OpenWeatherMap API key
+
+### Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/your-username/my-weather-app.git
-    cd my-weather-app
-    ```
+   ```bash
+   git clone https://github.com/navi1322/Tenki.git
+   cd Tenki
+   ```
 
 2. Install dependencies:
-    ```sh
-    npm install
-    ```
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-3. Create a `.env` file in the root directory and add your OpenWeather API key:
-    ```env
-    REACT_APP_OPENWEATHER_API_KEY=your_openweather_api_key
-    ```
+3. Create a `.env` file in the root directory and add your OpenWeatherMap API key:
+   ```env
+   VITE_WEATHER_API_KEY=your_api_key_here
+   ```
 
 4. Start the development server:
-    ```sh
-    npm run dev
-    ```
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-## Usage
+5. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-### Real-time Weather Tracking
-The application will automatically detect the user's location and display the current weather information upon loading.
+## 🛠️ Built With
 
-### Searching for Other Cities
-Users can search for weather information in other cities using the search bar. Simply enter the city name and hit "Enter" to fetch and display the weather details for the specified location.
+- **Frontend Framework**
+  - [React](https://reactjs.org/) - UI library
+  - [TypeScript](https://www.typescriptlang.org/) - Type safety
+  - [Vite](https://vitejs.dev/) - Build tool
 
-## Project Structure
+- **Styling**
+  - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
+  - [React Icons](https://react-icons.github.io/react-icons/) - Icon library
 
-```markdown
-my-weather-app/
-├── public/
-│   ├── index.html
-│   └── ...
-├── src/
-│   ├── components/
-│   │   ├── Header.js
-│   │   ├── WeatherCard.js
-│   │   └── ...
-│   ├── recoil/
-│   │   ├── atoms.js
-│   │   └── selectors.js
-│   ├── utils/
-│   │   └── api.js
-│   ├── App.js
-│   ├── index.js
-│   └── ...
-├── .env
-├── .gitignore
-├── package.json
-└── README.md  
+- **APIs**
+  - [OpenWeatherMap API](https://openweathermap.org/api) - Weather data
 
+## 📱 Screenshots
 
-Contributing
+### Desktop View
+![Desktop View](./public/desktop-view.png)
 
-Contributions are welcome! Please open an issue or submit a pull request if you have any improvements or bug fixes.
+### Mobile View
+![Mobile View](./public/mobile-view.png)
 
+## 🤝 Contributing
 
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Contact
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-For any inquiries, please contact me at rksharma041976@gmail.com .
+## 📝 License
 
-Thank you for using My Weather Application! Stay updated with the latest weather information, no matter where you are.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 👤 Author
 
-Feel free to customize the sections with your specific information, such as your GitHub repository link, contact email, and any additional details about your application.
+**Navneet Sharma**
+- GitHub: [@navi1322](https://github.com/navi1322)
+- LinkedIn: [Navneet Sharma](https://www.linkedin.com/in/navneet7)
+
+## 🙏 Acknowledgments
+
+- OpenWeatherMap for providing the weather data API
+- React Icons for the beautiful weather icons
+- The React and TypeScript communities for excellent documentation
+
+---
+
+⭐️ If you found this project helpful, please give it a star!
