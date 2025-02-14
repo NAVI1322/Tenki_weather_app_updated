@@ -11,7 +11,6 @@ interface AppBarProps {
 
 export function AppBar({ onWeatherUpdate, onForecastUpdate }: AppBarProps = {}) {
   const [menu, setMenu] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -19,15 +18,13 @@ export function AppBar({ onWeatherUpdate, onForecastUpdate }: AppBarProps = {}) 
       <div className="flex-1">
         <InputBox
           setWeatherData={(data) => {
-            setIsLoading(false);
             onWeatherUpdate?.(data);
           }}
           setForecastData={(data) => {
-            setIsLoading(false);
             onForecastUpdate?.(data);
           }}
-          setLoading={(loading) => {
-            setIsLoading(loading);
+          setLoading={() => {
+            // Loading state is handled internally by InputBox
           }}
         />
       </div>
