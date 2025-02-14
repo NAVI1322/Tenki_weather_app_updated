@@ -1,52 +1,65 @@
 import { ClimateData } from "../services/weatherData";
-import { LoadingElement } from "./Loading";
-import {  Loading } from "../atom/loading";
-import { useRecoilValue } from "recoil";
+import { Loading } from "./Loading";
+import { WiHumidity, WiStrongWind, WiBarometer } from "react-icons/wi";
 
+interface GridItemsProps {
+  forecastData: ClimateData | null;
+}
 
+export function GridItems({ forecastData }: GridItemsProps) {
+  if (!forecastData) return <Loading />;
 
+  const currentWeather = forecastData.list[0];
 
-
-export const GridItems = ({ climateData }: { climateData: ClimateData | null }) => {
-
-  const loading = useRecoilValue(Loading);
   return (
-    <div className="flex justify-center font-thin">
-
-      <div className="grid grid-cols-2 col-span-2  gap-5 w-full ">
-       
-          <div className=" rounded-xl bg-blue-50 flex flex-col p-6 gap-4">
-            <div className=" font-medium text-[18px]">{"Wind"}</div>
-            <div className=" font-medium text-slate-400">{"Today wind speed"}</div>
-            <div className="text-sm">{Math.round(climateData ? climateData?.list[0].speed * 3.6 : 0)} km/h</div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Wind Speed */}
+      <div className="bg-gradient-to-br from-white/50 to-white rounded-xl p-6 shadow-cartoon hover:shadow-cartoon-lg transition-all duration-300 group">
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            <WiStrongWind className="w-12 h-12 text-cartoon-blue group-hover:scale-110 transition-transform duration-300" />
+            <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-2 bg-black/10 rounded-full blur-lg"></div>
           </div>
-        
-        <div className=" rounded-xl bg-blue-50  flex flex-col p-6 gap-4 ">
-            <div className=" font-medium text-[18px]">{"Humidity"}</div>
-            <div className=" font-medium text-slate-400">{"Today humidity"}</div>
-            <div className="text-sm">{climateData?.list[0].humidity}%</div>
-          </div>
-        
-        {<div className=" rounded-xl bg-blue-50  flex flex-col p-6 gap-4">
-            <div className=" font-medium text-[18px]">{"Pressure"}</div>
-            <div className=" font-medium text-slate-400">{"Today Pressure"}</div>
-            <div className="text-sm">{(climateData?.list[0].pressure)}mBar</div>
-          </div>
-        }
-        {loading
-          ? <div className="  bg-blue-100  rounded-lg flex items-center justify-center"><LoadingElement /></div>
-          :
-          <div className=" rounded-xl bg-blue-50 flex flex-col p-6 ">
-            <div className=" font-medium text-[18px] ">{"Today Temperatures"}</div>
-            <div className=" pt-1 grid grid-cols-2 gap-2 space-x-2 text-sm">
-              <div><p className=" text-slate-400">Morning</p>{climateData && Math.round(climateData?.list[0].temp.morn)}°C</div>
-              <div><p className=" text-slate-400">Day</p>{climateData && Math.round(climateData?.list[0].temp.day)}°C</div>
-              <div><p className=" text-slate-400">Eve</p>{climateData && Math.round(climateData?.list[0].temp.eve)}°C</div>
-              <div><p className=" text-slate-400">Night</p>{climateData && Math.round(climateData?.list[0].temp.night)}°C</div>
+          <div>
+            <div className="text-sm text-primary-500/70">Wind Speed</div>
+            <div className="text-2xl font-display text-primary-600">
+              {Math.round(currentWeather.wind.speed * 3.6)} km/h
             </div>
           </div>
-        }
+        </div>
+      </div>
+
+      {/* Humidity */}
+      <div className="bg-gradient-to-br from-white/50 to-white rounded-xl p-6 shadow-cartoon hover:shadow-cartoon-lg transition-all duration-300 group">
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            <WiHumidity className="w-12 h-12 text-cartoon-teal group-hover:scale-110 transition-transform duration-300" />
+            <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-2 bg-black/10 rounded-full blur-lg"></div>
+          </div>
+          <div>
+            <div className="text-sm text-primary-500/70">Humidity</div>
+            <div className="text-2xl font-display text-primary-600">
+              {currentWeather.main.humidity}%
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Pressure */}
+      <div className="bg-gradient-to-br from-white/50 to-white rounded-xl p-6 shadow-cartoon hover:shadow-cartoon-lg transition-all duration-300 group">
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            <WiBarometer className="w-12 h-12 text-cartoon-purple group-hover:scale-110 transition-transform duration-300" />
+            <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-2 bg-black/10 rounded-full blur-lg"></div>
+          </div>
+          <div>
+            <div className="text-sm text-primary-500/70">Pressure</div>
+            <div className="text-2xl font-display text-primary-600">
+              {currentWeather.main.pressure} hPa
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
-};
+}
